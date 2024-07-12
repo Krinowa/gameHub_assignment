@@ -159,9 +159,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1d2hj"]
-radius = 8.51408
-height = 41.1644
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jban1"]
+size = Vector2(14.4783, 29.3796)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1h32u"]
 size = Vector2(9.66667, 28.3267)
@@ -174,14 +173,12 @@ texture_filter = 1
 position = Vector2(1, -27)
 scale = Vector2(1.5, 1.518)
 sprite_frames = SubResource("SpriteFrames_7rweb")
-animation = &"attack"
-frame = 2
-frame_progress = 0.593036
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -21)
-scale = Vector2(0.704715, 1.0203)
-shape = SubResource("CapsuleShape2D_1d2hj")
+position = Vector2(1.11333e-07, -21.5)
+scale = Vector2(0.966966, 1.4636)
+shape = SubResource("RectangleShape2D_jban1")
 
 [node name="AttackArea" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape_2d")]
 position = Vector2(1, -27)
@@ -195,5 +192,7 @@ position = Vector2(17, 3)
 shape = SubResource("RectangleShape2D_1h32u")
 disabled = true
 script = ExtResource("4_u2pah")
+facing_left_position = Vector2(-17, 3)
+facing_right_position = Vector2(17, 3)
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
