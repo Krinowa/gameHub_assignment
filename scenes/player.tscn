@@ -1,9 +1,9 @@
 [gd_scene load_steps=26 format=3 uid="uid://b0qe63ffyajjw"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_ju1bf"]
+[ext_resource type="Script" path="res://scripts/Player_scripts/player.gd" id="1_ju1bf"]
 [ext_resource type="Texture2D" uid="uid://cvemrma3ocmtt" path="res://assets/adventurer/Adventurer-1.5/adventurer-v1.5-Sheet.png" id="3_cfbsk"]
-[ext_resource type="Script" path="res://scripts/PlayerAttackArea.gd" id="3_wq4gh"]
-[ext_resource type="Script" path="res://scripts/PlayerFacingCollisionShape2D.gd" id="4_u2pah"]
+[ext_resource type="Script" path="res://scripts/Player_scripts/PlayerAttackArea.gd" id="3_wuxtq"]
+[ext_resource type="Script" path="res://scripts/Player_scripts/PlayerFacingCollisionShape2D.gd" id="4_c32l0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhqg7"]
 atlas = ExtResource("3_cfbsk")
@@ -166,6 +166,8 @@ size = Vector2(14.4783, 29.3796)
 size = Vector2(9.66667, 28.3267)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_ju1bf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -183,7 +185,9 @@ shape = SubResource("RectangleShape2D_jban1")
 [node name="AttackArea" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape_2d")]
 position = Vector2(1, -27)
 scale = Vector2(1.5, 1.518)
-script = ExtResource("3_wq4gh")
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_wuxtq")
 player = NodePath("..")
 facing_shape_2d = NodePath("CollisionShape2D")
 
@@ -191,8 +195,9 @@ facing_shape_2d = NodePath("CollisionShape2D")
 position = Vector2(17, 3)
 shape = SubResource("RectangleShape2D_1h32u")
 disabled = true
-script = ExtResource("4_u2pah")
+script = ExtResource("4_c32l0")
 facing_left_position = Vector2(-17, 3)
 facing_right_position = Vector2(17, 3)
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]
