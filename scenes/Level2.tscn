@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyxhwarcihnwk"]
+[gd_scene load_steps=11 format=3 uid="uid://dyxhwarcihnwk"]
 
 [ext_resource type="PackedScene" uid="uid://b0qe63ffyajjw" path="res://scenes/player.tscn" id="1_uhyqy"]
 [ext_resource type="Texture2D" uid="uid://rpeqo1i1qjs4" path="res://assets/frozen tiles/ice level demo.png" id="2_oo6ql"]
 [ext_resource type="PackedScene" uid="uid://dnjc46gvng0wc" path="res://scenes/Enemy/golem.tscn" id="3_olu5n"]
 [ext_resource type="PackedScene" uid="uid://febyj4360lu5" path="res://UI_scenes/health_changed_manager.tscn" id="4_tuomo"]
+[ext_resource type="PackedScene" uid="uid://c60bjii4e06kb" path="res://scenes/world/moving_platform.tscn" id="5_40cql"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ov5hk"]
 texture = ExtResource("2_oo6ql")
@@ -257,6 +258,7 @@ texture = ExtResource("2_oo6ql")
 2:6/0 = 0
 2:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:6/0/physics_layer_0/angular_velocity = 0.0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:6/0 = 0
 3:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:6/0/physics_layer_0/angular_velocity = 0.0
@@ -739,6 +741,44 @@ texture = ExtResource("2_oo6ql")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ov5hk")
 
+[sub_resource type="Animation" id="Animation_lnd1i"]
+resource_name = "move"
+length = 2.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(913, 593), Vector2(1290, 593)]
+}
+
+[sub_resource type="Animation" id="Animation_wo28u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(913, 593)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkvgq"]
+_data = {
+"RESET": SubResource("Animation_wo28u"),
+"move": SubResource("Animation_lnd1i")
+}
+
 [node name="Level2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uhyqy")]
@@ -761,4 +801,18 @@ layer_0/tile_data = PackedInt32Array(2359296, 131072, 5, 2359297, 131072, 5, 235
 position = Vector2(413, 629)
 scale = Vector2(2, 2)
 
+[node name="Golem2" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_olu5n")]
+position = Vector2(507, 628)
+scale = Vector2(2, 2)
+hit_state = NodePath("../Golem/CharacterStateMachine/hit")
+
 [node name="HealthChangedManager" parent="." instance=ExtResource("4_tuomo")]
+
+[node name="moving_platform" parent="." instance=ExtResource("5_40cql")]
+position = Vector2(913, 593)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="moving_platform"]
+libraries = {
+"": SubResource("AnimationLibrary_bkvgq")
+}
+autoplay = "move"

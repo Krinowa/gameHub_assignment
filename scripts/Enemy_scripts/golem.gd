@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @export var starting_move_direction : Vector2 = Vector2.LEFT
 @export var movement_speed = 30.0
+@export var hit_state : State
 
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
 
@@ -30,9 +31,9 @@ func _physics_process(delta):
 	elif direction == Vector2.LEFT:
 		golem_sprite_2d.flip_h = true
 	
-	if direction:
+	if direction && state_machine.check_if_can_move():
 		velocity.x = direction.x * movement_speed
-	else:
+	elif state_machine.current_state != hit_state:
 		velocity.x = move_toward(velocity.x, 0, movement_speed)
 
 	move_and_slide()
