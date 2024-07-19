@@ -1,9 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://b0qe63ffyajjw"]
+[gd_scene load_steps=28 format=3 uid="uid://b0qe63ffyajjw"]
 
 [ext_resource type="Script" path="res://scripts/Player_scripts/player.gd" id="1_ju1bf"]
 [ext_resource type="Texture2D" uid="uid://cvemrma3ocmtt" path="res://assets/adventurer/Adventurer-1.5/adventurer-v1.5-Sheet.png" id="3_cfbsk"]
 [ext_resource type="Script" path="res://scripts/Player_scripts/PlayerAttackArea.gd" id="3_wuxtq"]
 [ext_resource type="Script" path="res://scripts/Player_scripts/PlayerFacingCollisionShape2D.gd" id="4_c32l0"]
+[ext_resource type="AudioStream" uid="uid://b7py3kvi2qpxh" path="res://assets/sfx/player-jumping.wav" id="5_fqrt0"]
+[ext_resource type="AudioStream" uid="uid://dtfr8yikl0cx5" path="res://assets/sfx/sword-hit.mp3" id="6_kdqxs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhqg7"]
 atlas = ExtResource("3_cfbsk")
@@ -175,7 +177,7 @@ texture_filter = 1
 position = Vector2(1, -27)
 scale = Vector2(1.5, 1.518)
 sprite_frames = SubResource("SpriteFrames_7rweb")
-animation = &"idle"
+animation = &"jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.11333e-07, -21.5)
@@ -198,6 +200,16 @@ disabled = true
 script = ExtResource("4_c32l0")
 facing_left_position = Vector2(-17, 3)
 facing_right_position = Vector2(17, 3)
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_fqrt0")
+bus = &"SFX"
+
+[node name="AttackSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_kdqxs")
+bus = &"SFX"
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]

@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 class_name Player
 
+@onready var jump_sfx = $SFX/JumpSFX as AudioStreamPlayer2D
+@onready var attack_sfx = $SFX/AttackSFX as AudioStreamPlayer2D
+
 @onready var animated_sprite_player = $AnimatedSprite2D
 
 const SPEED = 200.0
@@ -21,6 +24,7 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jump_sfx.play()
 	
 	if Input.is_action_just_released("jump") && velocity.y < 0:
 		velocity.y = 0
@@ -55,6 +59,7 @@ func _physics_process(delta):
 		animated_sprite_player.play("attack")
 		isAttacking = true
 		$AttackArea/CollisionShape2D.disabled = false
+		attack_sfx.play()
 
 	if direction:
 		velocity.x = direction * SPEED

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://w6h8vyhiguq"
+path="res://.godot/imported/xDeviruchi - And The Journey Begins (Loop).wav-1927c7e7d7ec1afa895b5cda32b785d7.sample"
+
+[deps]
+
+source_file="res://assets/music/Separated Audio Files/And The Journey Begins/xDeviruchi - And The Journey Begins (Loop).wav"
+dest_files=["res://.godot/imported/xDeviruchi - And The Journey Begins (Loop).wav-1927c7e7d7ec1afa895b5cda32b785d7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

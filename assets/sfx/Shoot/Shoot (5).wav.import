@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8crrgfg7yo8d"
+path="res://.godot/imported/Shoot (5).wav-d6448ec1393b2a4b801fdfe7ba726f89.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Shoot/Shoot (5).wav"
+dest_files=["res://.godot/imported/Shoot (5).wav-d6448ec1393b2a4b801fdfe7ba726f89.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
