@@ -2,6 +2,8 @@ extends Node
 # SettingsDataContainer act as an centralised storage of all of the settings that we need to save it
 # Other need the same settings can just pull out from here 
 
+@onready var DEFAULT_SETTINGS : DefaultSettingsResource = preload("res://scenes/resources/settings/DefaultSettings.tres")
+
 var window_mode_index : int = 0
 var resolution_index : int = 0
 var master_volume : float = 0.0
@@ -33,8 +35,33 @@ func create_storage_dictionary() -> Dictionary:
 
 func get_window_mode_index() -> int:
 	if loaded_data == {}:
-		return 0
+		return DEFAULT_SETTINGS.DEFAULT_WINDOW_MODE_INDEX
 	return window_mode_index
+
+func get_resolution_index() -> int:
+	if loaded_data == {}:
+		return DEFAULT_SETTINGS.DEFAULT_RESOLUTION_INDEX
+	return resolution_index
+
+func get_subtitles_set() -> bool:
+	if loaded_data == {}:
+		return DEFAULT_SETTINGS.DEFAULT_SUBTITLES_SET
+	return subtitles_set
+
+func get_master_volume() -> float:
+	if loaded_data == {}:
+		return DEFAULT_SETTINGS.DEFAULT_MASTER_VOLUME
+	return master_volume
+
+func get_music_volume() -> float:
+	if loaded_data == {}:
+		return DEFAULT_SETTINGS.DEFAULT_MUSIC_VOLUME
+	return music_volume
+
+func get_sfx_volume() -> float:
+	if loaded_data == {}:
+		return DEFAULT_SETTINGS.DEFAULT_SFX_VOLUME
+	return sfx_volume
 
 func on_window_mode_selected(index: int ) -> void:
 	window_mode_index = index

@@ -10,9 +10,19 @@ var bus_index: int = 0
 func _ready():
 	h_slider.value_changed.connect(on_value_changed)
 	get_bus_name_by_index()
+	load_data()
 	set_name_label_text()
 	set_slider_value()
-	
+
+func load_data() -> void:
+	match bus_name:
+		"Master":
+			on_value_changed(SettingsContainer.get_master_volume())
+		"Music":
+			on_value_changed(SettingsContainer.get_music_volume())
+		"SFX":
+			on_value_changed(SettingsContainer.get_sfx_volume())
+
 func set_name_label_text() -> void:
 	audio_name_lbl.text = str(bus_name) + " Volume" 
 	
