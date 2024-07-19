@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cksj7mbt4j3ud"]
+[gd_scene load_steps=6 format=3 uid="uid://cksj7mbt4j3ud"]
 
 [ext_resource type="Script" path="res://scripts/UI_scripts/options_menu.gd" id="1_h83gg"]
 [ext_resource type="PackedScene" uid="uid://bma5g7m3ewdby" path="res://scenes/UI/options menu/setting_tab_container.tscn" id="2_3n4q6"]
 
+[sub_resource type="Theme" id="Theme_0h8lk"]
+
 [sub_resource type="SystemFont" id="SystemFont_ri7f1"]
 font_names = PackedStringArray("Impact")
 subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_fs01v"]
 
 [node name="Options_Menu" type="Control"]
 layout_mode = 3
@@ -14,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_0h8lk")
 script = ExtResource("1_h83gg")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -33,15 +38,18 @@ layout_mode = 2
 theme_override_constants/separation = -48
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 85)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_ri7f1")
 theme_override_font_sizes/font_size = 32
 text = "Options"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Setting_tab_container" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_3n4q6")]
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_fs01v")
 
 [node name="Exit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

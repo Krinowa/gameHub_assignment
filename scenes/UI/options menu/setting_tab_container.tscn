@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bma5g7m3ewdby"]
+[gd_scene load_steps=9 format=3 uid="uid://bma5g7m3ewdby"]
 
 [ext_resource type="PackedScene" uid="uid://8ob15jaoyroj" path="res://scenes/UI/options menu/window_mode_button.tscn" id="1_co0ki"]
 [ext_resource type="PackedScene" uid="uid://y1foekuop7k5" path="res://scenes/UI/options menu/hotkey_rebind_button.tscn" id="1_fu8u1"]
 [ext_resource type="PackedScene" uid="uid://c26ywumfj2ioj" path="res://scenes/UI/options menu/audio_slider_settings.tscn" id="1_hdovn"]
+[ext_resource type="Script" path="res://scripts/UI_scripts/setting_tab_container.gd" id="1_ngckb"]
 [ext_resource type="PackedScene" uid="uid://bllcop71xdck6" path="res://scenes/UI/options menu/resolution_mode_button.tscn" id="2_4meye"]
 [ext_resource type="PackedScene" uid="uid://f5gjilf0qin7" path="res://scenes/UI/options menu/subtitles_toggle_button.tscn" id="5_v61bl"]
 
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ngckb")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1

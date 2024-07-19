@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtp14oamapi2f"
-path="res://.godot/imported/dark background.jpg-72564fe3d8f23e0c5dbccf476b6fd8db.ctex"
+uid="uid://c2hj3y1fgh5cm"
+path="res://.godot/imported/panel-transparent-border-008.png-a8fceacf54cede0bba33f05ee213210b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Backgrounds/dark background.jpg"
-dest_files=["res://.godot/imported/dark background.jpg-72564fe3d8f23e0c5dbccf476b6fd8db.ctex"]
+source_file="res://assets/ui_backgrounds/Transparent border/panel-transparent-border-008.png"
+dest_files=["res://.godot/imported/panel-transparent-border-008.png-a8fceacf54cede0bba33f05ee213210b.ctex"]
 
 [params]
 

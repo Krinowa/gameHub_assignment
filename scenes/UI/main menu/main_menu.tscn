@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dflpdl6tug5hi"]
 
 [ext_resource type="Script" path="res://scripts/UI_scripts/main_menu.gd" id="1_wwmnn"]
-[ext_resource type="Texture2D" uid="uid://dtp14oamapi2f" path="res://assets/Backgrounds/dark background.jpg" id="2_2eb2m"]
+[ext_resource type="Texture2D" uid="uid://dtp14oamapi2f" path="res://assets/ui_backgrounds/dark background.jpg" id="2_pmnt5"]
 [ext_resource type="PackedScene" uid="uid://cksj7mbt4j3ud" path="res://scenes/UI/options menu/options_menu.tscn" id="3_535no"]
 [ext_resource type="AudioStream" uid="uid://dgtr2genijgoy" path="res://assets/music/xDeviruchi - Title Theme .wav" id="4_t7bym"]
 
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_2eb2m")
+texture = ExtResource("2_pmnt5")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
