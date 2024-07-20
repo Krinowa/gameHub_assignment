@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/UI_scripts/hotkey_rebind_button.gd" id="1_kx7ao"]
 [ext_resource type="FontFile" uid="uid://c6qqt7umpvcxx" path="res://assets/ui_backgrounds/fonts/MinimalPixel v2.ttf" id="2_svmb0"]
-[ext_resource type="Theme" uid="uid://do5rtu2b1ulmj" path="res://scenes/resources/ui/defaultButton.tres" id="3_nqcfo"]
+[ext_resource type="Theme" uid="uid://do5rtu2b1ulmj" path="res://scenes/resources/ui/shortButton.tres" id="3_telgr"]
 
 [node name="Hotkey_Rebind_Button" type="Control"]
 layout_mode = 3
@@ -41,7 +41,7 @@ theme_override_constants/separation = 200
 [node name="Button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(220, 80)
 layout_mode = 2
-theme = ExtResource("3_nqcfo")
+theme = ExtResource("3_telgr")
 theme_override_fonts/font = ExtResource("2_svmb0")
 theme_override_font_sizes/font_size = 24
 toggle_mode = true

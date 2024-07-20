@@ -1,23 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cksj7mbt4j3ud"]
+[gd_scene load_steps=7 format=3 uid="uid://cksj7mbt4j3ud"]
 
 [ext_resource type="Script" path="res://scripts/UI_scripts/options_menu.gd" id="1_h83gg"]
 [ext_resource type="PackedScene" uid="uid://bma5g7m3ewdby" path="res://scenes/UI/options menu/setting_tab_container.tscn" id="2_3n4q6"]
 [ext_resource type="FontFile" uid="uid://c6qqt7umpvcxx" path="res://assets/ui_backgrounds/fonts/MinimalPixel v2.ttf" id="2_dafft"]
+[ext_resource type="Theme" uid="uid://d3wkmp48nyaou" path="res://scenes/resources/ui/longButton.tres" id="4_7oapu"]
 
 [sub_resource type="Theme" id="Theme_0h8lk"]
 
 [sub_resource type="Theme" id="Theme_fs01v"]
-
-[sub_resource type="Theme" id="Theme_mcn8j"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_li757"]
-bg_color = Color(0.14902, 0.168627, 0.266667, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-border_blend = true
 
 [node name="Options_Menu" type="Control"]
 layout_mode = 3
@@ -63,8 +53,7 @@ theme = SubResource("Theme_fs01v")
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-theme = SubResource("Theme_mcn8j")
+theme = ExtResource("4_7oapu")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_dafft")
-theme_override_styles/normal = SubResource("StyleBoxFlat_li757")
 text = "Exit"
