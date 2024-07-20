@@ -1,10 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0qe63ffyajjw"]
+[gd_scene load_steps=32 format=3 uid="uid://b0qe63ffyajjw"]
 
 [ext_resource type="Script" path="res://scripts/Player_scripts/player.gd" id="1_ju1bf"]
 [ext_resource type="Texture2D" uid="uid://cvemrma3ocmtt" path="res://assets/adventurer/Adventurer-1.5/adventurer-v1.5-Sheet.png" id="3_cfbsk"]
+[ext_resource type="Texture2D" uid="uid://cinch5fak2xs8" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-ladder-climb-00.png" id="3_lcrav"]
 [ext_resource type="Script" path="res://scripts/Player_scripts/PlayerAttackArea.gd" id="3_wuxtq"]
 [ext_resource type="Script" path="res://scripts/Player_scripts/PlayerFacingCollisionShape2D.gd" id="4_c32l0"]
+[ext_resource type="Texture2D" uid="uid://dsqn8tqmln621" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-ladder-climb-01.png" id="4_ekxul"]
+[ext_resource type="Texture2D" uid="uid://cm8qaq54d2on4" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-ladder-climb-02.png" id="5_dr7et"]
 [ext_resource type="AudioStream" uid="uid://b7py3kvi2qpxh" path="res://assets/sfx/player-jumping.wav" id="5_fqrt0"]
+[ext_resource type="Texture2D" uid="uid://cpmfkkhommf6d" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-ladder-climb-03.png" id="6_kalf7"]
 [ext_resource type="AudioStream" uid="uid://dtfr8yikl0cx5" path="res://assets/sfx/sword-hit.mp3" id="6_kdqxs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhqg7"]
@@ -139,6 +143,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_lcrav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ekxul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dr7et")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kalf7")
+}],
+"loop": true,
+"name": &"ladder_climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_huuwn")
 }, {
 "duration": 1.0,
@@ -159,6 +180,11 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jban1"]
@@ -177,7 +203,7 @@ texture_filter = 1
 position = Vector2(1, -27)
 scale = Vector2(1.5, 1.518)
 sprite_frames = SubResource("SpriteFrames_7rweb")
-animation = &"jump"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.11333e-07, -21.5)

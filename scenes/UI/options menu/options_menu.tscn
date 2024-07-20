@@ -57,3 +57,5 @@ theme = ExtResource("4_7oapu")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_dafft")
 text = "Exit"
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Exit_Button" to="." method="_on_exit_button_mouse_entered"]

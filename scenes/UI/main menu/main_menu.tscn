@@ -98,3 +98,8 @@ stream = ExtResource("4_t7bym")
 volume_db = -13.967
 autoplay = true
 bus = &"Music"
+
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Start_Button" to="." method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Options_Button" to="." method="_on_options_button_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Exit_Button" to="." method="_on_exit_button_mouse_entered"]

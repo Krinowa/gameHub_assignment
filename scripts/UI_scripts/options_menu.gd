@@ -19,3 +19,7 @@ func on_exit_pressed() -> void:
 	exit_options_menu.emit()
 	SettingsSignalBus.emit_set_settings_dictionary(SettingsContainer.create_storage_dictionary())
 	set_process(false)
+	SoundFx.button_click()
+
+func _on_exit_button_mouse_entered():
+	SoundFx.button_hover()
