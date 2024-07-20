@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://8ob15jaoyroj"]
+[gd_scene load_steps=4 format=3 uid="uid://8ob15jaoyroj"]
 
 [ext_resource type="PackedScene" uid="uid://b22lyoahopu1q" path="res://scenes/UI/options menu/options_display_button.tscn" id="1_i6ucr"]
 [ext_resource type="Script" path="res://scripts/UI_scripts/window_mode_button.gd" id="2_jsquf"]
+[ext_resource type="FontFile" uid="uid://c6qqt7umpvcxx" path="res://assets/ui_backgrounds/fonts/MinimalPixel v2.ttf" id="3_dqphu"]
 
 [node name="Window_Mode_Button" instance=ExtResource("1_i6ucr")]
 script = ExtResource("2_jsquf")
 
 [node name="Label" parent="HBoxContainer" index="0"]
+theme_override_fonts/font = ExtResource("3_dqphu")
 text = "Window Mode"
+
+[node name="OptionButton" parent="HBoxContainer" index="2"]
+custom_minimum_size = Vector2(300, 64)
+theme_override_fonts/font = ExtResource("3_dqphu")
+theme_override_font_sizes/font_size = 28

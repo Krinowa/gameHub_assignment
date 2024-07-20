@@ -1,15 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cksj7mbt4j3ud"]
+[gd_scene load_steps=8 format=3 uid="uid://cksj7mbt4j3ud"]
 
 [ext_resource type="Script" path="res://scripts/UI_scripts/options_menu.gd" id="1_h83gg"]
 [ext_resource type="PackedScene" uid="uid://bma5g7m3ewdby" path="res://scenes/UI/options menu/setting_tab_container.tscn" id="2_3n4q6"]
+[ext_resource type="FontFile" uid="uid://c6qqt7umpvcxx" path="res://assets/ui_backgrounds/fonts/MinimalPixel v2.ttf" id="2_dafft"]
 
 [sub_resource type="Theme" id="Theme_0h8lk"]
 
-[sub_resource type="SystemFont" id="SystemFont_ri7f1"]
-font_names = PackedStringArray("Impact")
-subpixel_positioning = 0
-
 [sub_resource type="Theme" id="Theme_fs01v"]
+
+[sub_resource type="Theme" id="Theme_mcn8j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_li757"]
+bg_color = Color(0.14902, 0.168627, 0.266667, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+border_blend = true
 
 [node name="Options_Menu" type="Control"]
 layout_mode = 3
@@ -38,10 +46,10 @@ layout_mode = 2
 theme_override_constants/separation = -48
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 85)
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_ri7f1")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_dafft")
+theme_override_font_sizes/font_size = 45
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -52,6 +60,11 @@ size_flags_vertical = 3
 theme = SubResource("Theme_fs01v")
 
 [node name="Exit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
+theme = SubResource("Theme_mcn8j")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_dafft")
+theme_override_styles/normal = SubResource("StyleBoxFlat_li757")
 text = "Exit"

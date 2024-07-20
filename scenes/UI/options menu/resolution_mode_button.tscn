@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bllcop71xdck6"]
+[gd_scene load_steps=4 format=3 uid="uid://bllcop71xdck6"]
 
 [ext_resource type="PackedScene" uid="uid://b22lyoahopu1q" path="res://scenes/UI/options menu/options_display_button.tscn" id="1_h24cp"]
 [ext_resource type="Script" path="res://scripts/UI_scripts/resolution_mode_button.gd" id="2_d7kp6"]
+[ext_resource type="FontFile" uid="uid://c6qqt7umpvcxx" path="res://assets/ui_backgrounds/fonts/MinimalPixel v2.ttf" id="3_rm1vs"]
 
 [node name="Resolution_Mode_Button" instance=ExtResource("1_h24cp")]
 script = ExtResource("2_d7kp6")
 
 [node name="Label" parent="HBoxContainer" index="0"]
+theme_override_fonts/font = ExtResource("3_rm1vs")
 text = "Resolution"
+
+[node name="OptionButton" parent="HBoxContainer" index="2"]
+theme_override_fonts/font = ExtResource("3_rm1vs")
+theme_override_font_sizes/font_size = 28
