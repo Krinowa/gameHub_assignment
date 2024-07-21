@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b0qe63ffyajjw" path="res://scenes/player.tscn" id="1_uhyqy"]
 [ext_resource type="Texture2D" uid="uid://rpeqo1i1qjs4" path="res://assets/frozen tiles/ice level demo.png" id="2_oo6ql"]
-[ext_resource type="PackedScene" uid="uid://dnjc46gvng0wc" path="res://scenes/enemy/golem.tscn" id="3_r8g8b"]
+[ext_resource type="PackedScene" uid="uid://dnjc46gvng0wc" path="res://scenes/Enemy/golem.tscn" id="3_r8g8b"]
 [ext_resource type="PackedScene" uid="uid://febyj4360lu5" path="res://scenes/health/health_changed_manager.tscn" id="4_h4fib"]
 [ext_resource type="PackedScene" uid="uid://c60bjii4e06kb" path="res://scenes/world/moving_platform.tscn" id="5_40cql"]
 

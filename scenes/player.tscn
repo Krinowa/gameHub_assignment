@@ -203,7 +203,8 @@ texture_filter = 1
 position = Vector2(1, -27)
 scale = Vector2(1.5, 1.518)
 sprite_frames = SubResource("SpriteFrames_7rweb")
-animation = &"attack"
+animation = &"run"
+frame_progress = 0.17162
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.11333e-07, -21.5)
