@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dwqtyqmux34fn" path="res://assets/Forest Tileset/parallax background/plx-3.png" id="4_841p6"]
 [ext_resource type="Texture2D" uid="uid://dxa6beg6y3yg8" path="res://assets/Forest Tileset/parallax background/plx-4.png" id="5_1eswf"]
 [ext_resource type="Texture2D" uid="uid://jph8mw70ct5t" path="res://assets/Forest Tileset/parallax background/plx-5.png" id="6_sgpll"]
-[ext_resource type="PackedScene" uid="uid://byqps4nc1fynv" path="res://scenes/Enemy/thorn.tscn" id="8_rli07"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/thorn.tscn" id="8_rli07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mmr5"]
 texture = ExtResource("2_gmeha")
