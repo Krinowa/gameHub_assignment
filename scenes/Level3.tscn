@@ -1,16 +1,21 @@
-[gd_scene load_steps=17 format=3 uid="uid://cv1wms8ei4n7e"]
+[gd_scene load_steps=23 format=3 uid="uid://cv1wms8ei4n7e"]
 
 [ext_resource type="PackedScene" uid="uid://b0qe63ffyajjw" path="res://scenes/player.tscn" id="1_sgpab"]
 [ext_resource type="Texture2D" uid="uid://c6wy0wsf480wc" path="res://assets/level3_assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_ucj2v"]
-[ext_resource type="Texture2D" uid="uid://bn2jfktxhxdpw" path="res://assets/level3_assets/oak_woods_v1.0/background/background_layer_1.png" id="2_dei6w"]
+[ext_resource type="Texture2D" uid="uid://lf63e8gvhpig" path="res://assets/level3_assets/Free  Village Game Assets.png" id="2_0um2k"]
 [ext_resource type="Texture2D" uid="uid://cwd00w8sepx6a" path="res://assets/level3_assets/Wasteland-Files.png" id="2_m47ka"]
-[ext_resource type="Texture2D" uid="uid://dvtgosqqcimkw" path="res://assets/level3_assets/oak_woods_v1.0/background/background_layer_2.png" id="3_bb6nf"]
 [ext_resource type="Texture2D" uid="uid://0ke3xxc4r7ay" path="res://assets/level3_assets/Dungeon Tile Set.png" id="3_ud4xt"]
 [ext_resource type="Texture2D" uid="uid://byqagg76am30a" path="res://assets/level3_assets/world_tileset.png" id="4_afbf0"]
 [ext_resource type="Texture2D" uid="uid://crur6ogrpp520" path="res://assets/level3_assets/oak_woods_v1.0/decorations/lamp.png" id="5_kv23c"]
 [ext_resource type="Texture2D" uid="uid://cujjo4ulq51ws" path="res://assets/level3_assets/oak_woods_v1.0/decorations/fence_1.png" id="5_w1pq7"]
-[ext_resource type="Texture2D" uid="uid://5h3tbquv13rc" path="res://assets/level3_assets/oak_woods_v1.0/decorations/shop.png" id="6_prrvf"]
-[ext_resource type="Texture2D" uid="uid://rfwgn7pekad0" path="res://assets/level3_assets/oak_woods_v1.0/background/background_layer_3.png" id="7_ev1g1"]
+[ext_resource type="Texture2D" uid="uid://1fbs0ihy4oyy" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/7.png" id="6_mdf12"]
+[ext_resource type="Texture2D" uid="uid://bteqymsrv6rp6" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/6.png" id="7_matmo"]
+[ext_resource type="Texture2D" uid="uid://bhwxe2hf16car" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/5.png" id="8_fq5je"]
+[ext_resource type="Texture2D" uid="uid://1ahl01jwvu2a" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/4.png" id="9_xgjvo"]
+[ext_resource type="Texture2D" uid="uid://q4aa3nwagvgk" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/3.png" id="10_csgl3"]
+[ext_resource type="Texture2D" uid="uid://dv6wh6bghgrhe" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/2.png" id="11_ewqjt"]
+[ext_resource type="Texture2D" uid="uid://d267rviacdre6" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/1.png" id="12_7ehua"]
+[ext_resource type="Texture2D" uid="uid://dtc8g4k12onss" path="res://assets/level3_assets/village1.png" id="12_i6iur"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t1ekh"]
 texture = ExtResource("1_ucj2v")
@@ -1625,6 +1630,9 @@ texture = ExtResource("1_ucj2v")
 30:21/0/physics_layer_0/angular_velocity = 0.0
 30:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yhhmc"]
+texture = ExtResource("2_0um2k")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jm0eu"]
 texture = ExtResource("2_m47ka")
 20:7/0 = 0
@@ -2459,6 +2467,7 @@ sources/0 = SubResource("TileSetAtlasSource_t1ekh")
 sources/4 = SubResource("TileSetAtlasSource_jm0eu")
 sources/5 = SubResource("TileSetAtlasSource_h5dkq")
 sources/6 = SubResource("TileSetAtlasSource_nfsik")
+sources/2 = SubResource("TileSetAtlasSource_yhhmc")
 
 [node name="Level3" type="Node2D"]
 
@@ -2476,7 +2485,7 @@ motion_mirroring = Vector2(320, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1"]
 scale = Vector2(2.08125, 2.13889)
-texture = ExtResource("2_dei6w")
+texture = ExtResource("6_mdf12")
 centered = false
 
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2486,7 +2495,7 @@ motion_mirroring = Vector2(320, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
 scale = Vector2(2.0875, 2.13889)
-texture = ExtResource("3_bb6nf")
+texture = ExtResource("7_matmo")
 centered = false
 
 [node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2496,7 +2505,47 @@ motion_mirroring = Vector2(320, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
 scale = Vector2(2.0875, 2.13333)
-texture = ExtResource("7_ev1g1")
+texture = ExtResource("8_fq5je")
+centered = false
+
+[node name="Layer4" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer4"]
+scale = Vector2(2.0875, 2.13333)
+texture = ExtResource("9_xgjvo")
+centered = false
+
+[node name="Layer5" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer5"]
+scale = Vector2(2.0875, 2.13333)
+texture = ExtResource("10_csgl3")
+centered = false
+
+[node name="Layer6" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer6"]
+scale = Vector2(2.0875, 2.13333)
+texture = ExtResource("11_ewqjt")
+centered = false
+
+[node name="Layer7" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer7"]
+scale = Vector2(2.0875, 2.13333)
+texture = ExtResource("12_7ehua")
 centered = false
 
 [node name="Lamp" type="Sprite2D" parent="."]
@@ -2507,12 +2556,13 @@ texture = ExtResource("5_kv23c")
 position = Vector2(116, 551)
 texture = ExtResource("5_w1pq7")
 
-[node name="Shop" type="Sprite2D" parent="."]
-position = Vector2(307, 511)
-texture = ExtResource("6_prrvf")
+[node name="Village1" type="Sprite2D" parent="."]
+position = Vector2(295, 510)
+scale = Vector2(0.254407, 0.260749)
+texture = ExtResource("12_i6iur")
 
 [node name="Player" parent="." instance=ExtResource("1_sgpab")]
-position = Vector2(193, 509)
+position = Vector2(180, 548)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -26)
