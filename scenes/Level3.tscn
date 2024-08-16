@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cv1wms8ei4n7e"]
 
-[ext_resource type="PackedScene" uid="uid://b0qe63ffyajjw" path="res://scenes/player.tscn" id="1_sgpab"]
+[ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player.tscn" id="1_sgpab"]
 [ext_resource type="Texture2D" uid="uid://c6wy0wsf480wc" path="res://assets/level3_assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_ucj2v"]
 [ext_resource type="Texture2D" uid="uid://lf63e8gvhpig" path="res://assets/level3_assets/Free  Village Game Assets.png" id="2_0um2k"]
 [ext_resource type="Texture2D" uid="uid://cwd00w8sepx6a" path="res://assets/level3_assets/Wasteland-Files.png" id="2_m47ka"]

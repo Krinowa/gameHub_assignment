@@ -1,15 +1,26 @@
-[gd_scene load_steps=32 format=3 uid="uid://dj2t8t3jmmywx"]
+[gd_scene load_steps=43 format=3 uid="uid://dj2t8t3jmmywx"]
 
 [ext_resource type="Script" path="res://scripts/Player_scripts/player.gd" id="1_ju1bf"]
 [ext_resource type="Texture2D" uid="uid://cvemrma3ocmtt" path="res://assets/adventurer/Adventurer-1.5/adventurer-v1.5-Sheet.png" id="3_cfbsk"]
 [ext_resource type="Texture2D" uid="uid://cinch5fak2xs8" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-ladder-climb-00.png" id="3_lcrav"]
+[ext_resource type="Texture2D" uid="uid://dexmeavuufjao" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-cast-03.png" id="3_o1mav"]
 [ext_resource type="Script" path="res://scripts/Player_scripts/PlayerAttackArea.gd" id="3_wuxtq"]
 [ext_resource type="Script" path="res://scripts/Player_scripts/PlayerFacingCollisionShape2D.gd" id="4_c32l0"]
+[ext_resource type="Texture2D" uid="uid://dwb0rgf2kil3g" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-cast-loop-00.png" id="4_csp20"]
 [ext_resource type="Texture2D" uid="uid://dsqn8tqmln621" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-ladder-climb-01.png" id="4_ekxul"]
+[ext_resource type="Texture2D" uid="uid://c5n3xsofbulr3" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-cast-loop-01.png" id="5_1citi"]
 [ext_resource type="Texture2D" uid="uid://cm8qaq54d2on4" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-ladder-climb-02.png" id="5_dr7et"]
 [ext_resource type="AudioStream" uid="uid://b7py3kvi2qpxh" path="res://assets/sfx/player-jumping.wav" id="5_fqrt0"]
+[ext_resource type="Texture2D" uid="uid://dat8fulhtqwe1" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-cast-loop-02.png" id="6_fbb4v"]
 [ext_resource type="Texture2D" uid="uid://cpmfkkhommf6d" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-ladder-climb-03.png" id="6_kalf7"]
 [ext_resource type="AudioStream" uid="uid://dtfr8yikl0cx5" path="res://assets/sfx/sword-hit.mp3" id="6_kdqxs"]
+[ext_resource type="Texture2D" uid="uid://c5nmn27u77l28" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-cast-loop-03.png" id="7_0wpds"]
+[ext_resource type="Texture2D" uid="uid://bbiuux5ihm1qo" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-smrslt-00.png" id="8_wqm6s"]
+[ext_resource type="Texture2D" uid="uid://ikb12oq1ftgw" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-smrslt-01.png" id="9_t2dwl"]
+[ext_resource type="Texture2D" uid="uid://wnbdsuwqiopy" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-smrslt-02.png" id="10_org3q"]
+[ext_resource type="Texture2D" uid="uid://b3v681pwj4f5m" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-smrslt-03.png" id="11_0voma"]
+[ext_resource type="Texture2D" uid="uid://boh0gajf2gdri" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-wall-slide-00.png" id="12_rtg4q"]
+[ext_resource type="Texture2D" uid="uid://blehe7ie6a2p4" path="res://assets/adventurer/Adventurer-1.5/Individual Sprites/adventurer-wall-slide-01.png" id="13_hy6c2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhqg7"]
 atlas = ExtResource("3_cfbsk")
@@ -104,6 +115,43 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_o1mav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_csp20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1citi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fbb4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0wpds")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_wqm6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t2dwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_org3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0voma")
+}],
+"loop": true,
+"name": &"double_jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_iap5c")
 }, {
 "duration": 1.0,
@@ -181,10 +229,16 @@ animations = [{
 "name": &"run",
 "speed": 8.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_rtg4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hy6c2")
+}],
 "loop": true,
-"name": &"swim",
-"speed": 5.0
+"name": &"wall_slide",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jban1"]
@@ -203,8 +257,9 @@ texture_filter = 1
 position = Vector2(1, -27)
 scale = Vector2(1.5, 1.518)
 sprite_frames = SubResource("SpriteFrames_7rweb")
-animation = &"run"
-frame_progress = 0.17162
+animation = &"double_jump"
+frame = 3
+frame_progress = 0.359219
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.11333e-07, -21.5)
