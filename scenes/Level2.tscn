@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyxhwarcihnwk"]
+[gd_scene load_steps=20 format=3 uid="uid://dyxhwarcihnwk"]
 
-[ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player.tscn" id="1_uhyqy"]
+[ext_resource type="Script" path="res://scenes/world/level2/Level2.gd" id="1_q3h1t"]
+[ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player/player.tscn" id="1_w184p"]
 [ext_resource type="Texture2D" uid="uid://rpeqo1i1qjs4" path="res://assets/frozen tiles/ice level demo.png" id="2_oo6ql"]
 [ext_resource type="PackedScene" uid="uid://dnjc46gvng0wc" path="res://scenes/Enemy/golem.tscn" id="3_r8g8b"]
 [ext_resource type="PackedScene" uid="uid://febyj4360lu5" path="res://scenes/health/health_changed_manager.tscn" id="4_h4fib"]
@@ -10,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cpx2lk6bnkb12" path="res://assets/frozen tiles/Background/BackgroundMediumM.png" id="8_u3byq"]
 [ext_resource type="Texture2D" uid="uid://cfjx3w1da5yb8" path="res://assets/frozen tiles/Background/BackgroundNearM.png" id="9_ic2nw"]
 [ext_resource type="Texture2D" uid="uid://dlt4jk51kcv7d" path="res://assets/frozen tiles/Background/BackgroundNearestM.png" id="10_1twc8"]
+[ext_resource type="PackedScene" uid="uid://b1w15f43clqgd" path="res://scenes/player/camera_limiter.tscn" id="11_8xv4q"]
+[ext_resource type="PackedScene" uid="uid://ypck3v5n5wi4" path="res://scenes/world/killzone.tscn" id="13_cp3l5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ov5hk"]
 texture = ExtResource("2_oo6ql")
@@ -778,17 +781,18 @@ _data = {
 "move": SubResource("Animation_lnd1i")
 }
 
-[node name="Level2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgppg"]
+size = Vector2(448.5, 15)
 
-[node name="Player" parent="." instance=ExtResource("1_uhyqy")]
+[node name="Level2" type="Node2D"]
+position = Vector2(-80, 6)
+script = ExtResource("1_q3h1t")
+
+[node name="Player" parent="." instance=ExtResource("1_w184p")]
 z_index = 1
 texture_filter = 1
 position = Vector2(37, 583)
 platform_wall_layers = 1
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(2, -15)
-zoom = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -808,6 +812,7 @@ scale = Vector2(2, 2)
 hit_state = NodePath("../Golem/CharacterStateMachine/hit")
 
 [node name="HealthChangedManager" parent="." instance=ExtResource("4_h4fib")]
+metadata/_edit_use_anchors_ = true
 
 [node name="moving_platform" parent="." instance=ExtResource("5_40cql")]
 position = Vector2(913, 593)
@@ -822,7 +827,7 @@ autoplay = "move"
 
 [node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
-position = Vector2(-140, 0)
+position = Vector2(-220, 6)
 motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(340, 0)
 
@@ -833,7 +838,7 @@ centered = false
 
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
-position = Vector2(-140, 0)
+position = Vector2(-220, 6)
 motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(340, 0)
 
@@ -844,7 +849,7 @@ centered = false
 
 [node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
-position = Vector2(-140, 0)
+position = Vector2(-220, 6)
 motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(340, 0)
 
@@ -855,7 +860,7 @@ centered = false
 
 [node name="Layer4" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
-position = Vector2(-140, 0)
+position = Vector2(-220, 6)
 motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(340, 0)
 
@@ -866,7 +871,7 @@ centered = false
 
 [node name="Layer5" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
-position = Vector2(-140, 0)
+position = Vector2(-220, 6)
 motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(320, 0)
 
@@ -874,3 +879,35 @@ motion_mirroring = Vector2(320, 0)
 scale = Vector2(2.0875, 2.13333)
 texture = ExtResource("9_ic2nw")
 centered = false
+
+[node name="CameraLimiters" type="Node" parent="."]
+
+[node name="camera_limiter_1" parent="CameraLimiters" instance=ExtResource("11_8xv4q")]
+position = Vector2(-46, 697)
+limit_x = 1
+limit_y = 2
+
+[node name="CollisionShape2D" parent="CameraLimiters/camera_limiter_1" index="0"]
+position = Vector2(170, -161)
+
+[node name="LimitPosition" parent="CameraLimiters/camera_limiter_1" index="1"]
+position = Vector2(-43, 731)
+
+[node name="camera_limiter_2" parent="CameraLimiters" instance=ExtResource("11_8xv4q")]
+position = Vector2(1915, 696)
+limit_x = 2
+
+[node name="CollisionShape2D" parent="CameraLimiters/camera_limiter_2" index="0"]
+position = Vector2(-1142, -164)
+
+[node name="LimitPosition" parent="CameraLimiters/camera_limiter_2" index="1"]
+position = Vector2(438, -170)
+
+[node name="SpikeKillZone" parent="." instance=ExtResource("13_cp3l5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeKillZone"]
+position = Vector2(1100.75, 768.5)
+shape = SubResource("RectangleShape2D_mgppg")
+
+[editable path="CameraLimiters/camera_limiter_1"]
+[editable path="CameraLimiters/camera_limiter_2"]

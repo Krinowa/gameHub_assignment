@@ -2,8 +2,10 @@ extends CharacterBody2D
 
 class_name Player
 
+@onready var camera = $Camera
 @onready var jump_sfx = $SFX/JumpSFX as AudioStreamPlayer2D
 @onready var attack_sfx = $SFX/AttackSFX as AudioStreamPlayer2D
+@onready var dead_sfx = $SFX/DeadSFX as AudioStreamPlayer2D
 @onready var dash_sfx = $SFX/DashSFX as AudioStreamPlayer2D
 
 @onready var animated_sprite_player = $AnimatedSprite2D
@@ -28,6 +30,7 @@ var isOnWall = false
 var is_wall_sliding = false
 var jump_max = 2
 var jump_count = 0
+var is_dead = false
 
 signal facing_direction_changed(facing_right : bool)
 
@@ -130,7 +133,7 @@ func start_dash():
 	isDashing = true
 	dash_time_left = DASH_TIME
 	dash_target_speed = DASH_SPEED * (1 if not animated_sprite_player.flip_h else -1)
-	#dash_sfx.play()
+	dash_sfx.play()
 	animated_sprite_player.play("dash")
 	# Start the cooldown timer manually
 	dash_cooldown_timer = DASH_COOLDOWN
@@ -152,6 +155,15 @@ func wall_slide(delta):
 		velocity.y += (WALL_SLIDE_SPEED * delta)
 		velocity.y = min(velocity.y, WALL_SLIDE_SPEED)
 		animated_sprite_player.play("wall_slide")
+		
+func handle_death():
+	if is_dead:
+		pass
+	is_dead = true
+	velocity = Vector2.ZERO
+	animated_sprite_player.play("dead")
+	dead_sfx.play()
+	set_physics_process(false)
 
 # Animation looped callback
 func _on_animated_sprite_2d_animation_looped():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://butlwftqi2lk1"]
 
-[ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player.tscn" id="1_8p1qt"]
+[ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player/player.tscn" id="1_8p1qt"]
 [ext_resource type="Texture2D" uid="uid://dcp3a1gaapl71" path="res://assets/Forest Tileset/jungle tileset.png" id="2_gmeha"]
 [ext_resource type="Texture2D" uid="uid://dgtsn36qurovt" path="res://assets/Forest Tileset/parallax background(current)/layers/parallax-demon-woods-bg.png" id="4_f7mnr"]
 [ext_resource type="Texture2D" uid="uid://cmccty673kkbd" path="res://assets/Forest Tileset/parallax background(current)/layers/parallax-demon-woods-far-trees.png" id="5_cdl03"]
@@ -1179,9 +1179,6 @@ sources/0 = SubResource("TileSetAtlasSource_4mmr5")
 
 [node name="Player" parent="." instance=ExtResource("1_8p1qt")]
 position = Vector2(224, 432)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_r0mtg")
