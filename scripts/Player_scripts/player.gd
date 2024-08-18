@@ -19,6 +19,7 @@ const DASH_DECELERATION = 3000.0  # Deceleration after dash ends
 const DASH_COOLDOWN = 1.0  # Cooldown time in seconds
 const WALL_JUMP_FORCE_X = 300.0  # Horizontal force applied when wall jumping
 const WALL_SLIDE_SPEED = 50.0  # Speed of sliding down the wall
+const MAX_HEALTH = 100  # Maximum health value
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var isAttacking = false
@@ -30,9 +31,11 @@ var isOnWall = false
 var is_wall_sliding = false
 var jump_max = 2
 var jump_count = 0
-var is_dead = false
+var is_dead = false 
+var health = MAX_HEALTH
 
 signal facing_direction_changed(facing_right : bool)
+signal health_changed(current_health : int)
 
 func _physics_process(delta):
 	# Add gravity if not dashing and not on a wall
@@ -51,7 +54,7 @@ func _physics_process(delta):
 		velocity.x = WALL_JUMP_FORCE_X
 
 	# Handle dash input
-	if Input.is_action_just_pressed("dash") and not isDashing and dash_cooldown_timer <= 0:
+	if Input.is_action_just_pressed("dash") and not isDashing and dash_cooldown_timer <= 0 and not isAttacking:
 		start_dash()
 
 	if isDashing:
@@ -91,7 +94,7 @@ func _physics_process(delta):
 			elif direction != 0:
 				animated_sprite_player.play("run")
 		elif isOnWall:
-			animated_sprite_player.play("wall_slide")  # Add a sliding animation for the wall slide
+			animated_sprite_player.play("wall_slide")
 		else:
 			if velocity.y < 0:
 				if jump_count == 1:
@@ -102,15 +105,14 @@ func _physics_process(delta):
 				animated_sprite_player.play("fall")
 
 	# Handle attack
-	if Input.is_action_just_pressed("attack") and not isAttacking and not isDashing:
+	if Input.is_action_just_pressed("attack") and not isAttacking and not isDashing and not is_on_wall():
 		animated_sprite_player.play("attack")
 		isAttacking = true
 		$AttackArea/CollisionShape2D.disabled = false
 		attack_sfx.play()
 
 	# Handle movement with smoother dash
-	if isDashing:
-		# Accelerate towards dash target speed
+	if isDashing and not isAttacking:
 		velocity.x = move_toward(velocity.x, dash_target_speed, DASH_ACCELERATION * delta)
 	else:
 		if direction:
@@ -127,21 +129,26 @@ func _physics_process(delta):
 	else:
 		dash_cooldown_timer = 0
 
-
-
 func start_dash():
 	isDashing = true
 	dash_time_left = DASH_TIME
 	dash_target_speed = DASH_SPEED * (1 if not animated_sprite_player.flip_h else -1)
 	dash_sfx.play()
 	animated_sprite_player.play("dash")
-	# Start the cooldown timer manually
 	dash_cooldown_timer = DASH_COOLDOWN
 
 func end_dash():
 	isDashing = false
 	dash_target_speed = 0.0
-	
+	# Ensure the correct animation plays after dashing
+	if is_on_floor():
+		if Input.get_axis("move_left", "move_right") != 0:
+			animated_sprite_player.play("run")
+		else:
+			animated_sprite_player.play("idle")
+	else:
+		animated_sprite_player.play("fall")
+
 func wall_slide(delta):
 	if is_on_wall() and !is_on_floor():
 		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
@@ -158,12 +165,18 @@ func wall_slide(delta):
 		
 func handle_death():
 	if is_dead:
-		pass
+		return
 	is_dead = true
 	velocity = Vector2.ZERO
 	animated_sprite_player.play("dead")
 	dead_sfx.play()
 	set_physics_process(false)
+
+func take_damage(amount):
+	health -= amount
+	emit_signal("health_changed", health)
+	if health <= 0:
+		handle_death()
 
 # Animation looped callback
 func _on_animated_sprite_2d_animation_looped():

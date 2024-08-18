@@ -340,6 +340,7 @@ stream = ExtResource("30_0ch7e")
 
 [node name="Camera" parent="." instance=ExtResource("22_wyjx6")]
 visible = false
+limit_smoothed = true
 
 [node name="InteractionArea" type="Area2D" parent="."]
 script = ExtResource("23_ltq50")

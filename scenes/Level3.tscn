@@ -788,7 +788,7 @@ texture = ExtResource("1_ucj2v")
 1:11/0 = 0
 1:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:11/0/physics_layer_0/angular_velocity = 0.0
-1:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.530329, 8, -8, 8, 8, -8, 8)
+1:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.892913, 8, -8, 8, 8, -8, 8)
 2:11/0 = 0
 2:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:11/0/physics_layer_0/angular_velocity = 0.0
@@ -2470,6 +2470,7 @@ sources/6 = SubResource("TileSetAtlasSource_nfsik")
 sources/2 = SubResource("TileSetAtlasSource_yhhmc")
 
 [node name="Level3" type="Node2D"]
+position = Vector2(-73, 0)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_by37l")
@@ -2480,6 +2481,7 @@ layer_0/tile_data = PackedInt32Array(1245212, 0, 0, 1245213, 65536, 0, 1638429, 
 
 [node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+position = Vector2(-73, 0)
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(320, 0)
 
@@ -2490,6 +2492,7 @@ centered = false
 
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+position = Vector2(-73, 0)
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(320, 0)
 
@@ -2500,6 +2503,7 @@ centered = false
 
 [node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+position = Vector2(-73, 0)
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(320, 0)
 
@@ -2510,6 +2514,7 @@ centered = false
 
 [node name="Layer4" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+position = Vector2(-73, 0)
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(320, 0)
 
@@ -2520,6 +2525,7 @@ centered = false
 
 [node name="Layer5" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+position = Vector2(-73, 0)
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(320, 0)
 
@@ -2530,6 +2536,7 @@ centered = false
 
 [node name="Layer6" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+position = Vector2(-73, 0)
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(320, 0)
 
@@ -2540,6 +2547,7 @@ centered = false
 
 [node name="Layer7" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+position = Vector2(-73, 0)
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(320, 0)
 
@@ -2563,8 +2571,3 @@ texture = ExtResource("12_i6iur")
 
 [node name="Player" parent="." instance=ExtResource("1_sgpab")]
 position = Vector2(180, 548)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -26)
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true

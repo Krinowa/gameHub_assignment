@@ -5,7 +5,7 @@ class_name CameraLimitManager
 @export var limit_transition_speed = 3
 @onready var camera: Camera2D = get_parent() as Camera2D
 
-const MAX_LIMIT = 100000
+const MAX_LIMIT = 300000
 
 var camera_bounds_x_min
 var camera_bounds_x_max
@@ -29,26 +29,30 @@ func _physics_process(delta):
 	camera.limit_right = _calc_limit(camera.limit_right, limit_right_target, true)
 	camera.limit_top = _calc_limit(camera.limit_top, limit_top_target, false)
 	camera.limit_bottom = _calc_limit(camera.limit_bottom, limit_bottom_target, false)
+	print("Left limit:", camera.limit_left)
+	print("Right limit:", camera.limit_right)
+	print("Top limit:", camera.limit_top)
+	print("Bottom limit:", camera.limit_bottom)
 	
 func _calc_limit(current_limit, target_limit, is_x):
 	if current_limit == target_limit:
 		return current_limit
 	var clamped_limit = _clamp_limit(target_limit, is_x)
-	return _move_limit_toward(current_limit, clamped_limit)
+	return _move_limit_toward(clamped_limit, target_limit)
 
 func _clamp_limit(limit, is_x):
 	var player_position = camera.player.global_position.x if is_x else camera.player.global_position.y
-	var is_limit_after_player = sign(limit - player_position) >= 0
+	var is_limit_after_player = sign(limit - player_position)
 	var clamp_value
 	if is_x:
 		clamp_value = camera_bounds_x_max if is_limit_after_player else camera_bounds_x_min
 	else:
 		clamp_value = camera_bounds_y_max if is_limit_after_player else camera_bounds_y_min
 		
-	return min(clamp_value, limit) if is_limit_after_player else max(clamp_value, limit)
+	return minf(clamp_value, limit) if is_limit_after_player else maxf(clamp_value, limit)
 	
 func _move_limit_toward(current, target):
-	if abs(current) >= MAX_LIMIT or abs(target) >= MAX_LIMIT:
+	if abs(current) >= MAX_LIMIT || abs(target) >= MAX_LIMIT:
 		return target
 	if current != target:
 		return move_toward(current, target, limit_transition_speed)

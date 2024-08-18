@@ -1178,7 +1178,7 @@ sources/0 = SubResource("TileSetAtlasSource_4mmr5")
 [node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_8p1qt")]
-position = Vector2(224, 432)
+position = Vector2(224, 429)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_r0mtg")

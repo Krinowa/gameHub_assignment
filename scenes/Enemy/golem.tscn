@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dnjc46gvng0wc"]
+[gd_scene load_steps=24 format=3 uid="uid://dnjc46gvng0wc"]
 
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/golem.gd" id="1_dkjuh"]
 [ext_resource type="Texture2D" uid="uid://cs1motanxxeoe" path="res://assets/Enemy_Galore_I/Golem/No Armor/Golem_IdleB.png" id="1_gfpvp"]
@@ -244,6 +244,9 @@ states/idle/node = SubResource("AnimationNodeAnimation_irwtd")
 states/idle/position = Vector2(345, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_m7l6e"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_kx4to"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_y867a"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_usjau")]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6djx"]
+size = Vector2(187.563, 20)
+
 [node name="Golem" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
 collision_layer = 4
 collision_mask = 3
@@ -300,5 +303,15 @@ can_move = false
 wait_time = 0.25
 one_shot = true
 
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-1, 5)
+shape = SubResource("RectangleShape2D_i6djx")
+
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="CharacterStateMachine/hit/Timer" to="CharacterStateMachine/hit" method="_on_timer_timeout"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

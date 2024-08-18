@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmnjt325mfjhg"]
+
+[ext_resource type="Script" path="res://scripts/world_scripts/traps/falling_trap.gd" id="1_nhstc"]
+[ext_resource type="Texture2D" uid="uid://djotss2qnd5nb" path="res://assets/Trap/Spike_B.png" id="2_ubnqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axah6"]
+size = Vector2(32, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_083wy"]
+size = Vector2(32, 119)
+
+[node name="FaillingSpikes" type="Node2D"]
+script = ExtResource("1_nhstc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -3.14159
+texture = ExtResource("2_ubnqs")
+hframes = 10
+frame = 4
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_axah6")
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
+position = Vector2(0, 53.5)
+shape = SubResource("RectangleShape2D_083wy")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="PlayerDetect" to="." method="_on_player_detect_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
