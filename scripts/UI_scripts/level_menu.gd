@@ -12,7 +12,7 @@ extends Control
 @onready var level2 = load("res://scenes/UI/level 2/level2_game_manager.tscn") as PackedScene
 @onready var level3 = load("res://scenes/UI/level 3/level3_game_manager.tscn") as PackedScene
 @onready var level4 = load("res://scenes/UI/level 4/level4_game_manager.tscn") as PackedScene
-# temperory level 4 using level 1 scene
+
 @onready var back = load("res://scenes/UI/main menu/main_menu.tscn") as PackedScene
 
 
