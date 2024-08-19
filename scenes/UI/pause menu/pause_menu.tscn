@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbqarqkj4tmxh"]
 
-[ext_resource type="Script" path="res://scripts/Level3_scripts/level3_pause_menu.gd" id="1_puspv"]
+[ext_resource type="Script" path="res://scripts/UI_scripts/pause_menu.gd" id="1_7fxdr"]
 [ext_resource type="FontFile" uid="uid://c6qqt7umpvcxx" path="res://assets/ui_backgrounds/fonts/MinimalPixel v2.ttf" id="2_l4wsd"]
 
-[node name="Level3_PauseMenu" type="Control"]
+[node name="Pause_Menu" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 8
@@ -13,7 +13,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_puspv")
+script = ExtResource("1_7fxdr")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

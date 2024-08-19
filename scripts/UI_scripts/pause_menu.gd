@@ -1,4 +1,4 @@
-class_name Level3_PauseMenu
+class_name PauseMenu
 
 extends Control
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=3 uid="uid://0vy7d18qen8q"]
 
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/skeleton.gd" id="1_pmjfb"]
-[ext_resource type="Texture2D" uid="uid://dc88hder5dyod" path="res://assets/level3_assets/enemy/skeleton_enemy/Skeleton enemy.png" id="2_k1q7b"]
-[ext_resource type="Texture2D" uid="uid://dya2jrophxbvl" path="res://assets/level3_assets/enemy/health_bar/enemy_health_bar_foreground_000.png" id="3_7sdvm"]
-[ext_resource type="Texture2D" uid="uid://173qv8xifptp" path="res://assets/level3_assets/enemy/health_bar/enemy_health_bar_000.png" id="4_yb3ou"]
+[ext_resource type="Texture2D" path="res://assets/level3_assets/enemy/skeleton_enemy/Skeleton enemy.png" id="2_k1q7b"]
+[ext_resource type="Texture2D" path="res://assets/level3_assets/enemy/health_bar/enemy_health_bar_foreground_000.png" id="3_7sdvm"]
+[ext_resource type="Texture2D" path="res://assets/level3_assets/enemy/health_bar/enemy_health_bar_000.png" id="4_yb3ou"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vnqud"]
 radius = 6.0
