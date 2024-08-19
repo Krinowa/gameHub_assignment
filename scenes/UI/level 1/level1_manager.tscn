@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkabnetj6h7gd"]
+
+[ext_resource type="Script" path="res://scripts/Level1_scripts/level1_manager.gd" id="1_llcsi"]
+[ext_resource type="PackedScene" uid="uid://butlwftqi2lk1" path="res://scenes/Level1.tscn" id="2_cckky"]
+
+[node name="Level1_Manager" type="Node"]
+process_mode = 3
+script = ExtResource("1_llcsi")
+
+[node name="Level1" parent="." instance=ExtResource("2_cckky")]
+process_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

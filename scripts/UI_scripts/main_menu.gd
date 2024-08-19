@@ -19,7 +19,7 @@ func _ready():
 # Changes the scene to the preloaded start_level when the start button is pressed.
 func on_start_pressed() -> void:
 	#get_tree().change_scene_to_packed(start_level)
-	SceneSwitcher.switch_scene("res://scenes/UI/level 3/level3_manager.tscn")
+	SceneSwitcher.switch_scene("res://scenes/UI/level 1/level1_manager.tscn")
 	SoundFx.button_click()
 
 func on_level_pressed() -> void:

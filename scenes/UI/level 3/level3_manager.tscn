@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://momwkv4vtes0"]
 
-[ext_resource type="Script" path="res://scripts/UI_scripts/level3_manager.gd" id="1_1i6sr"]
+[ext_resource type="Script" path="res://scripts/Level3_scripts/level3_manager.gd" id="1_1i6sr"]
 [ext_resource type="PackedScene" uid="uid://cv1wms8ei4n7e" path="res://scenes/Level3.tscn" id="2_rqa22"]
-[ext_resource type="PackedScene" uid="uid://bbqarqkj4tmxh" path="res://scenes/UI/pause menu/pause_menu.tscn" id="3_kgft2"]
+[ext_resource type="PackedScene" uid="uid://bbqarqkj4tmxh" path="res://scenes/level_3/level3_pause_menu.tscn" id="3_kgft2"]
 
 [node name="Level3_Manager" type="Node"]
 process_mode = 3
@@ -14,6 +14,5 @@ process_mode = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 2
 
-[node name="Pause_Menu" parent="CanvasLayer" node_paths=PackedStringArray("level3_manager") instance=ExtResource("3_kgft2")]
-visible = false
+[node name="Level3_PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("level3_manager") instance=ExtResource("3_kgft2")]
 level3_manager = NodePath("../..")
