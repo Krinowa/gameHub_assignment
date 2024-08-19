@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5auesr3kyo4"
-path="res://.godot/imported/ATTACK.png-5810068753458da72bf2165bfeb76bb1.ctex"
+uid="uid://dya2jrophxbvl"
+path="res://.godot/imported/enemy_health_bar_foreground_000.png-01bc8006a18adab13192fc75310b976b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemy_Galore_I/ATTACK.png"
-dest_files=["res://.godot/imported/ATTACK.png-5810068753458da72bf2165bfeb76bb1.ctex"]
+source_file="res://assets/level3_assets/enemy/health_bar/enemy_health_bar_foreground_000.png"
+dest_files=["res://.godot/imported/enemy_health_bar_foreground_000.png-01bc8006a18adab13192fc75310b976b.ctex"]
 
 [params]
 

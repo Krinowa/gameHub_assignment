@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cmccty673kkbd" path="res://assets/Forest Tileset/parallax background(current)/layers/parallax-demon-woods-far-trees.png" id="5_cdl03"]
 [ext_resource type="Texture2D" uid="uid://buqaavnxawet" path="res://assets/Forest Tileset/parallax background(current)/layers/parallax-demon-woods-mid-trees.png" id="6_k6a04"]
 [ext_resource type="Texture2D" uid="uid://bornjdcfq6dro" path="res://assets/Forest Tileset/parallax background(current)/layers/parallax-demon-woods-close-trees.png" id="7_g6sjc"]
-[ext_resource type="PackedScene" uid="uid://dd7m7gj8r51qc" path="res://scenes/Enemy/Boss.tscn" id="8_p8ut0"]
-[ext_resource type="PackedScene" uid="uid://byqps4nc1fynv" path="res://scenes/Enemy/thorn.tscn" id="8_rli07"]
+[ext_resource type="PackedScene" uid="uid://dd7m7gj8r51qc" path="res://scenes/enemy/Boss.tscn" id="8_p8ut0"]
+[ext_resource type="PackedScene" uid="uid://byqps4nc1fynv" path="res://scenes/enemy/thorn.tscn" id="8_rli07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mmr5"]
 texture = ExtResource("2_gmeha")

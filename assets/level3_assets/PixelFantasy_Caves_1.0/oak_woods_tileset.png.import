@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5auesr3kyo4"
-path="res://.godot/imported/ATTACK.png-5810068753458da72bf2165bfeb76bb1.ctex"
+uid="uid://dgoag01m6db64"
+path="res://.godot/imported/oak_woods_tileset.png-63b047616036c4ebc9b50f6ded4cfc16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemy_Galore_I/ATTACK.png"
-dest_files=["res://.godot/imported/ATTACK.png-5810068753458da72bf2165bfeb76bb1.ctex"]
+source_file="res://assets/level3_assets/PixelFantasy_Caves_1.0/oak_woods_tileset.png"
+dest_files=["res://.godot/imported/oak_woods_tileset.png-63b047616036c4ebc9b50f6ded4cfc16.ctex"]
 
 [params]
 

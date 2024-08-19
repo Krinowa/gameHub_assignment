@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5auesr3kyo4"
-path="res://.godot/imported/ATTACK.png-5810068753458da72bf2165bfeb76bb1.ctex"
+uid="uid://cx53sla8fjp5s"
+path="res://.godot/imported/stone_block_sheet.png-06b8065c66257d238804abe3b717c161.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemy_Galore_I/ATTACK.png"
-dest_files=["res://.godot/imported/ATTACK.png-5810068753458da72bf2165bfeb76bb1.ctex"]
+source_file="res://assets/level3_assets/world_objects/stone_block_sheet.png"
+dest_files=["res://.godot/imported/stone_block_sheet.png-06b8065c66257d238804abe3b717c161.ctex"]
 
 [params]
 
