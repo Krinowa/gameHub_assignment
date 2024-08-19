@@ -23,7 +23,6 @@ SettingsSignalBus="*res://scripts/Global_load_scripts/SettingsSignalBus.gd"
 SaveManager="*res://scripts/Global_load_scripts/SaveManager.gd"
 SoundFx="*res://scenes/UI/sound/sound_fx.tscn"
 AudioPlayer="*res://scenes/UI/sound/audio_player.tscn"
-SceneSwitcher="*res://scripts/Global_load_scripts/scene_switcher.gd"
 
 [dotnet]
 

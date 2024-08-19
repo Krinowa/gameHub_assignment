@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c80p6vufyrfqa"]
+
+[ext_resource type="Script" path="res://scripts/UI_scripts/Level 1/level1_game_manager.gd" id="1_ttxny"]
+[ext_resource type="PackedScene" uid="uid://butlwftqi2lk1" path="res://scenes/Level1.tscn" id="1_x4t44"]
+[ext_resource type="PackedScene" uid="uid://btr688x6gkrgt" path="res://scenes/UI/level 1/level1_pause_menu.tscn" id="2_mp475"]
+
+[node name="Level1_GameManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_ttxny")
+
+[node name="Level1" parent="." instance=ExtResource("1_x4t44")]
+process_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Level1_PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("level1_game_manager") instance=ExtResource("2_mp475")]
+process_mode = 2
+visible = false
+level1_game_manager = NodePath("../..")

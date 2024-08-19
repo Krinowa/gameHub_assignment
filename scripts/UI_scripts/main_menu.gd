@@ -8,9 +8,8 @@ extends Control
 @onready var options_menu = $Options_Menu as OptionsMenu
 @onready var margin_container = $MarginContainer as MarginContainer #main menu margin container
 
-#@onready var start_level = preload("res://scenes/Level2.tscn") as PackedScene
-#@export var start_level = preload("res://scenes/UI/level 1/game_manager.tscn") as PackedScene
-@onready var level_menu = preload("res://scenes/UI/level menu/level_menu.tscn") as PackedScene
+@export var start_level = load("res://scenes/UI/level 1/level1_game_manager.tscn") as PackedScene
+@onready var level_menu = load("res://scenes/UI/level menu/level_menu.tscn") as PackedScene
 
 func _ready():
 	handle_connecting_signals()
@@ -18,8 +17,7 @@ func _ready():
 	
 # Changes the scene to the preloaded start_level when the start button is pressed.
 func on_start_pressed() -> void:
-	#get_tree().change_scene_to_packed(start_level)
-	SceneSwitcher.switch_scene("res://scenes/UI/level 3/level3_manager.tscn")
+	get_tree().change_scene_to_packed(start_level)
 	SoundFx.button_click()
 
 func on_level_pressed() -> void:
@@ -50,8 +48,6 @@ func handle_connecting_signals() -> void:
 	options_button.button_down.connect(on_options_pressed)
 	exit_button.button_down.connect(on_exit_pressed)
 	options_menu.exit_options_menu.connect(on_exit_options_menu)
-
-
 
 
 func _on_start_button_mouse_entered():

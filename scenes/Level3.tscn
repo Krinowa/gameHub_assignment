@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/skeleton_place.gd" id="17_4qwnv"]
 [ext_resource type="PackedScene" uid="uid://0vy7d18qen8q" path="res://scenes/enemy/skeleton.tscn" id="17_prgiv"]
 [ext_resource type="PackedScene" uid="uid://g01ereyudnj2" path="res://scenes/traps/swing_spike_club_position.tscn" id="17_vapvn"]
-[ext_resource type="PackedScene" path="res://scenes/platform/falling_platform.tscn" id="19_daujf"]
+[ext_resource type="PackedScene" uid="uid://cx73egxdiu1sw" path="res://scenes/platform/falling_platform.tscn" id="19_daujf"]
 [ext_resource type="PackedScene" uid="uid://c1e35qgw5vkf4" path="res://scenes/level_3/ground_button.tscn" id="19_sv0d3"]
 [ext_resource type="PackedScene" uid="uid://cy3so073pi1r0" path="res://scenes/level_3/switch.tscn" id="20_aoeib"]
 [ext_resource type="PackedScene" uid="uid://bbsmrsn2tnxf6" path="res://scenes/level_3/stone_gate.tscn" id="21_ri4ex"]

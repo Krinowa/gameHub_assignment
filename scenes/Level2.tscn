@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://dyxhwarcihnwk"]
+[gd_scene load_steps=16 format=3 uid="uid://dyxhwarcihnwk"]
 
-[ext_resource type="Script" path="res://scripts/world_scripts/level2/Level2.gd" id="1_h15j1"]
-[ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player/player.tscn" id="1_w184p"]
+[ext_resource type="PackedScene" uid="uid://blbis6475pvc4" path="res://scenes/player.tscn" id="1_uhyqy"]
 [ext_resource type="Texture2D" uid="uid://rpeqo1i1qjs4" path="res://assets/frozen tiles/ice level demo.png" id="2_oo6ql"]
 [ext_resource type="PackedScene" uid="uid://dnjc46gvng0wc" path="res://scenes/enemy/golem.tscn" id="3_r8g8b"]
 [ext_resource type="PackedScene" uid="uid://febyj4360lu5" path="res://scenes/health/health_changed_manager.tscn" id="4_h4fib"]
@@ -11,50 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cpx2lk6bnkb12" path="res://assets/frozen tiles/Background/BackgroundMediumM.png" id="8_u3byq"]
 [ext_resource type="Texture2D" uid="uid://cfjx3w1da5yb8" path="res://assets/frozen tiles/Background/BackgroundNearM.png" id="9_ic2nw"]
 [ext_resource type="Texture2D" uid="uid://dlt4jk51kcv7d" path="res://assets/frozen tiles/Background/BackgroundNearestM.png" id="10_1twc8"]
-[ext_resource type="PackedScene" uid="uid://b1w15f43clqgd" path="res://scenes/player/camera_limiter.tscn" id="11_8xv4q"]
-[ext_resource type="PackedScene" uid="uid://ypck3v5n5wi4" path="res://scenes/world/killzone.tscn" id="13_cp3l5"]
-[ext_resource type="PackedScene" uid="uid://dmnjt325mfjhg" path="res://scenes/world/traps/falling_spikes.tscn" id="13_kyxvc"]
-
-[sub_resource type="Animation" id="Animation_wo28u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(913, 593)]
-}
-
-[sub_resource type="Animation" id="Animation_lnd1i"]
-resource_name = "move"
-length = 2.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 2.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(913, 593), Vector2(1290, 593)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkvgq"]
-_data = {
-"RESET": SubResource("Animation_wo28u"),
-"move": SubResource("Animation_lnd1i")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgppg"]
-size = Vector2(448.5, 15)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ov5hk"]
 texture = ExtResource("2_oo6ql")
@@ -785,143 +740,54 @@ texture = ExtResource("2_oo6ql")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ov5hk")
 
-[node name="Level2" type="Node2D"]
-position = Vector2(-80, 6)
-script = ExtResource("1_h15j1")
+[sub_resource type="Animation" id="Animation_wo28u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(913, 593)]
+}
 
-[node name="Player" parent="." instance=ExtResource("1_w184p")]
+[sub_resource type="Animation" id="Animation_lnd1i"]
+resource_name = "move"
+length = 2.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(913, 593), Vector2(1290, 593)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkvgq"]
+_data = {
+"RESET": SubResource("Animation_wo28u"),
+"move": SubResource("Animation_lnd1i")
+}
+
+[node name="Level2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_uhyqy")]
 z_index = 1
 texture_filter = 1
 position = Vector2(37, 583)
-platform_wall_layers = 1
 
-[node name="HealthChangedManager" parent="." instance=ExtResource("4_h4fib")]
-metadata/_edit_use_anchors_ = true
-
-[node name="moving_platform" parent="." instance=ExtResource("5_40cql")]
-position = Vector2(913, 593)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="moving_platform"]
-libraries = {
-"": SubResource("AnimationLibrary_bkvgq")
-}
-autoplay = "move"
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_filter = 1
-position = Vector2(-220, 6)
-motion_scale = Vector2(0.1, 0)
-motion_mirroring = Vector2(340, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1"]
-scale = Vector2(2.08125, 2.13889)
-texture = ExtResource("6_3p4n0")
-centered = false
-
-[node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_filter = 1
-position = Vector2(-220, 6)
-motion_scale = Vector2(0.1, 0)
-motion_mirroring = Vector2(340, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
-scale = Vector2(2.0875, 2.13889)
-texture = ExtResource("7_xbqh6")
-centered = false
-
-[node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_filter = 1
-position = Vector2(-220, 6)
-motion_scale = Vector2(0.1, 0)
-motion_mirroring = Vector2(340, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
-scale = Vector2(2.0875, 2.13333)
-texture = ExtResource("8_u3byq")
-centered = false
-
-[node name="Layer4" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_filter = 1
-position = Vector2(-220, 6)
-motion_scale = Vector2(0.1, 0)
-motion_mirroring = Vector2(340, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer4"]
-scale = Vector2(2.0875, 2.13333)
-texture = ExtResource("10_1twc8")
-centered = false
-
-[node name="Layer5" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_filter = 1
-position = Vector2(-220, 6)
-motion_scale = Vector2(0.1, 0)
-motion_mirroring = Vector2(320, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer5"]
-scale = Vector2(2.0875, 2.13333)
-texture = ExtResource("9_ic2nw")
-centered = false
-
-[node name="CameraLimiters" type="Node" parent="."]
-
-[node name="camera_limiter_1" parent="CameraLimiters" instance=ExtResource("11_8xv4q")]
-position = Vector2(68, 695)
-limit_x = 1
-limit_y = 2
-
-[node name="CollisionShape2D" parent="CameraLimiters/camera_limiter_1" index="0"]
-position = Vector2(239, -168)
-
-[node name="LimitPosition" parent="CameraLimiters/camera_limiter_1" index="1"]
-position = Vector2(-190, 756)
-
-[node name="camera_limiter_2" parent="CameraLimiters" instance=ExtResource("11_8xv4q")]
-position = Vector2(2036, 689)
-limit_x = 2
-
-[node name="CollisionShape2D" parent="CameraLimiters/camera_limiter_2" index="0"]
-position = Vector2(-1263, -175)
-
-[node name="LimitPosition" parent="CameraLimiters/camera_limiter_2" index="1"]
-position = Vector2(335, -159)
-
-[node name="SpikeKillZone" parent="." instance=ExtResource("13_cp3l5")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeKillZone"]
-position = Vector2(1100.75, 768.5)
-shape = SubResource("RectangleShape2D_mgppg")
-
-[node name="FallingSpikes" parent="." instance=ExtResource("13_kyxvc")]
-position = Vector2(929, 476)
-
-[node name="CollisionShape2D" parent="FallingSpikes/PlayerDetect" index="0"]
-position = Vector2(0, 146.5)
-
-[node name="FallingSpikes2" parent="." instance=ExtResource("13_kyxvc")]
-position = Vector2(1006, 476)
-
-[node name="CollisionShape2D" parent="FallingSpikes2/PlayerDetect" index="0"]
-position = Vector2(0, 146.5)
-
-[node name="FallingSpikes3" parent="." instance=ExtResource("13_kyxvc")]
-position = Vector2(1092, 476)
-
-[node name="CollisionShape2D" parent="FallingSpikes3/PlayerDetect" index="0"]
-position = Vector2(0, 146.5)
-
-[node name="FallingSpikes4" parent="." instance=ExtResource("13_kyxvc")]
-position = Vector2(1175, 476)
-
-[node name="CollisionShape2D" parent="FallingSpikes4/PlayerDetect" index="0"]
-position = Vector2(0, 146.5)
-
-[node name="FallingSpikes5" parent="." instance=ExtResource("13_kyxvc")]
-position = Vector2(1261, 476)
-
-[node name="CollisionShape2D" parent="FallingSpikes5/PlayerDetect" index="0"]
-position = Vector2(0, 146.5)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(2, -15)
+zoom = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -936,14 +802,74 @@ position = Vector2(413, 629)
 scale = Vector2(2, 2)
 
 [node name="Golem2" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("3_r8g8b")]
-position = Vector2(530, 629)
+position = Vector2(507, 628)
 scale = Vector2(2, 2)
 hit_state = NodePath("../Golem/CharacterStateMachine/hit")
 
-[editable path="CameraLimiters/camera_limiter_1"]
-[editable path="CameraLimiters/camera_limiter_2"]
-[editable path="FallingSpikes"]
-[editable path="FallingSpikes2"]
-[editable path="FallingSpikes3"]
-[editable path="FallingSpikes4"]
-[editable path="FallingSpikes5"]
+[node name="HealthChangedManager" parent="." instance=ExtResource("4_h4fib")]
+
+[node name="moving_platform" parent="." instance=ExtResource("5_40cql")]
+position = Vector2(913, 593)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="moving_platform"]
+libraries = {
+"": SubResource("AnimationLibrary_bkvgq")
+}
+autoplay = "move"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-140, 0)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(340, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1"]
+scale = Vector2(2.08125, 2.13889)
+texture = ExtResource("6_3p4n0")
+centered = false
+
+[node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-140, 0)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(340, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
+scale = Vector2(2.0875, 2.13889)
+texture = ExtResource("7_xbqh6")
+centered = false
+
+[node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-140, 0)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(340, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
+scale = Vector2(2.0875, 2.13333)
+texture = ExtResource("8_u3byq")
+centered = false
+
+[node name="Layer4" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-140, 0)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(340, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer4"]
+scale = Vector2(2.0875, 2.13333)
+texture = ExtResource("10_1twc8")
+centered = false
+
+[node name="Layer5" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(-140, 0)
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer5"]
+scale = Vector2(2.0875, 2.13333)
+texture = ExtResource("9_ic2nw")
+centered = false

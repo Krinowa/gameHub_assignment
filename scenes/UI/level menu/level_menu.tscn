@@ -59,11 +59,15 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HSeperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Level1_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level1_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(190, 80)
 layout_mode = 2
 theme = ExtResource("4_sigih")
@@ -72,7 +76,11 @@ theme_override_font_sizes/font_size = 24
 text = "Level 1
 "
 
-[node name="Level2_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="VSeperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="Level2_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(190, 80)
 layout_mode = 2
 theme = ExtResource("4_sigih")
@@ -81,7 +89,14 @@ theme_override_font_sizes/font_size = 24
 text = "Level 2
 "
 
-[node name="Level3_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HSeperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level3_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(190, 80)
 layout_mode = 2
 theme = ExtResource("4_sigih")
@@ -89,6 +104,38 @@ theme_override_fonts/font = ExtResource("3_j6ajn")
 theme_override_font_sizes/font_size = 24
 text = "Level 3"
 
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Level1_Button" to="." method="_on_level_1_button_mouse_entered"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Level2_Button" to="." method="_on_level_2_button_mouse_entered"]
-[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Level3_Button" to="." method="_on_level_3_button_mouse_entered"]
+[node name="VSeperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="Level4_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(190, 80)
+layout_mode = 2
+theme = ExtResource("4_sigih")
+theme_override_fonts/font = ExtResource("3_j6ajn")
+theme_override_font_sizes/font_size = 24
+text = "Level 4
+"
+
+[node name="HSeperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Back_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+theme = ExtResource("4_sigih")
+theme_override_fonts/font = ExtResource("3_j6ajn")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Level1_Button" to="." method="_on_level_1_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Level1_Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Level2_Button" to="." method="_on_level_2_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Level2_Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Level3_Button" to="." method="_on_level_3_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Level3_Button" to="." method="_on_level_3_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Level4_Button" to="." method="_on_level_4_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Level4_Button" to="." method="_on_level_4_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Back_button" to="." method="_on_back_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Back_button" to="." method="_on_back_button_pressed"]
