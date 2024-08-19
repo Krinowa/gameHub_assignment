@@ -20,9 +20,17 @@ func _on_body_entered(body):
 				child.hit(damage, Vector2.LEFT)
 			else:
 				child.hit(damage, Vector2.ZERO)
+	
+	# If entered enemy has a method attacked, pass the damage value to the enemy node
+	# e.g: skeleton.gd
+	if body.has_method('attacked'):
+		body.attacked(damage)
+
+
 
 func _on_player_facing_direction_changed(facing_right : bool):
 	if(facing_right):
 		facing_shape_2d.position = facing_shape_2d.facing_right_position
 	else:
 		facing_shape_2d.position = facing_shape_2d.facing_left_position
+

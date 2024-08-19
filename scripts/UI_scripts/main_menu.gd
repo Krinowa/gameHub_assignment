@@ -2,20 +2,28 @@ class_name MainMenu
 extends Control
 
 @onready var start_button = $MarginContainer/HBoxContainer/VBoxContainer/Start_Button as Button
+@onready var level_button = $MarginContainer/HBoxContainer/VBoxContainer/Level_Button as Button
 @onready var exit_button = $MarginContainer/HBoxContainer/VBoxContainer/Exit_Button as Button
 @onready var options_button = $MarginContainer/HBoxContainer/VBoxContainer/Options_Button as Button
 @onready var options_menu = $Options_Menu as OptionsMenu
 @onready var margin_container = $MarginContainer as MarginContainer #main menu margin container
 
-@onready var start_level = preload("res://scenes/Level2.tscn") as PackedScene
-
+#@onready var start_level = preload("res://scenes/Level2.tscn") as PackedScene
+#@export var start_level = preload("res://scenes/UI/level 1/game_manager.tscn") as PackedScene
+@onready var level_menu = preload("res://scenes/UI/level menu/level_menu.tscn") as PackedScene
 
 func _ready():
 	handle_connecting_signals()
+	AudioPlayer.play_music_level()
 	
 # Changes the scene to the preloaded start_level when the start button is pressed.
 func on_start_pressed() -> void:
-	get_tree().change_scene_to_packed(start_level)
+	#get_tree().change_scene_to_packed(start_level)
+	SceneSwitcher.switch_scene("res://scenes/UI/level 3/level3_manager.tscn")
+	SoundFx.button_click()
+
+func on_level_pressed() -> void:
+	get_tree().change_scene_to_packed(level_menu)
 	SoundFx.button_click()
 
 # Hides the main menu and shows the options menu when the options button is pressed.
@@ -38,6 +46,7 @@ func on_exit_options_menu() -> void:
 # Connects the signals for the buttons and the options menu.
 func handle_connecting_signals() -> void:
 	start_button.button_down.connect(on_start_pressed)
+	level_button.button_down.connect(on_level_pressed)
 	options_button.button_down.connect(on_options_pressed)
 	exit_button.button_down.connect(on_exit_pressed)
 	options_menu.exit_options_menu.connect(on_exit_options_menu)
@@ -48,8 +57,14 @@ func handle_connecting_signals() -> void:
 func _on_start_button_mouse_entered():
 	SoundFx.button_hover()
 
+func _on_level_button_mouse_entered():
+	SoundFx.button_hover()
+
 func _on_options_button_mouse_entered():
 	SoundFx.button_hover()
 
 func _on_exit_button_mouse_entered():
 	SoundFx.button_hover()
+
+
+
