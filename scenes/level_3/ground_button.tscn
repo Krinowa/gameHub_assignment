@@ -31,8 +31,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p7i8i"]
-radius = 0.05
-height = 2.0
+radius = 2.5
+height = 6.0
 
 [node name="GroundButton" type="StaticBody2D"]
 collision_layer = 4
@@ -56,6 +56,7 @@ collision_layer = 4
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PressedDetector"]
+position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_p7i8i")
 
 [connection signal="body_entered" from="PressedDetector" to="." method="_on_pressed_detector_body_entered"]

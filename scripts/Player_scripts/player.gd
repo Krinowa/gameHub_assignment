@@ -134,9 +134,6 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, playerData.speed)
 	
 	move_and_slide()
-	
-
-
 
 
 #changed on add comment only -> # When press attack, the attack area change to true to hit the enemy

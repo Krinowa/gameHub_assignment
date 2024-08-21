@@ -32,12 +32,16 @@ func open_stone_gate():
 
 # if the body entered the pressedDetector and the button is NOT pressed, then pressed the button
 func _on_pressed_detector_body_entered(body):
-	if body is RigidBox or body.is_in_group('player'):
+	if body.is_in_group('rigidBox'):
+		print('rigidbox')
+	elif body.is_in_group('player'):
+		print('player')
+	if body.is_in_group('rigidBox') or body.is_in_group('player'):
 		if is_button_pressed == false:
 			press_button()
 
 # if the body exited the pressedDetector and the button is pressed, then unpressed the button
 func _on_pressed_detector_body_exited(body):
-	if body is RigidBox or body.is_in_group('player'):
+	if body.is_in_group('rigidBox') or body.is_in_group('player'):
 		if is_button_pressed == true:
 			unpress_button()
