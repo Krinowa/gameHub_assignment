@@ -19,7 +19,7 @@ const DASH_DECELERATION = 3000.0  # Deceleration after dash ends
 const DASH_COOLDOWN = 1.0  # Cooldown time in seconds
 const WALL_JUMP_FORCE_X = 300.0  # Horizontal force applied when wall jumping
 const WALL_SLIDE_SPEED = 50.0  # Speed of sliding down the wall
-const MAX_HEALTH = 100  # Maximum health value
+const MAX_HEALTH = 100
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var isAttacking = false
