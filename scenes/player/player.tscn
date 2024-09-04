@@ -289,7 +289,7 @@ size = Vector2(29, 44)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_ju1bf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -309,7 +309,7 @@ shape = SubResource("RectangleShape2D_jban1")
 position = Vector2(1, -27)
 scale = Vector2(1.5, 1.518)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 12
 script = ExtResource("3_wuxtq")
 player = NodePath("..")
 facing_shape_2d = NodePath("CollisionShape2D")

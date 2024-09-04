@@ -29,10 +29,6 @@ func _physics_process(delta):
 	camera.limit_right = _calc_limit(camera.limit_right, limit_right_target, true)
 	camera.limit_top = _calc_limit(camera.limit_top, limit_top_target, false)
 	camera.limit_bottom = _calc_limit(camera.limit_bottom, limit_bottom_target, false)
-	print("Left limit:", camera.limit_left)
-	print("Right limit:", camera.limit_right)
-	print("Top limit:", camera.limit_top)
-	print("Bottom limit:", camera.limit_bottom)
 	
 func _calc_limit(current_limit, target_limit, is_x):
 	if current_limit == target_limit:

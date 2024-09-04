@@ -8,14 +8,14 @@
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/Follow.gd" id="6_xfuu3"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/MeleeAttack.gd" id="7_kaa0x"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/HomingMissile.gd" id="8_0re3t"]
-[ext_resource type="PackedScene" uid="uid://vvmnfa2o1way" path="res://scenes/Enemy/bullet.tscn" id="9_wcn8u"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/bullet.tscn" id="9_wcn8u"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/LaserBeam.gd" id="10_k2tw5"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/ArmorBuff.gd" id="11_oh8g7"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/Dash.gd" id="12_2lrij"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/Death.gd" id="13_f80si"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/FireBlast.gd" id="14_5xacc"]
-[ext_resource type="PackedScene" uid="uid://cf03o2osruft5" path="res://scenes/Enemy/fire_blast.tscn" id="15_7t07u"]
-[ext_resource type="PackedScene" uid="uid://b53hqmp431avk" path="res://scenes/Enemy/electric_ball.tscn" id="16_0g573"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/fire_blast.tscn" id="15_7t07u"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy/electric_ball.tscn" id="16_0g573"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/Damageable.gd" id="17_g2y7q"]
 
 [sub_resource type="Animation" id="Animation_2na5v"]
@@ -386,7 +386,7 @@ func transition():
 [node name="GolemBoss" type="CharacterBody2D"]
 position = Vector2(321, 185)
 collision_layer = 8
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_p7hqg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -516,5 +516,4 @@ ball_node = ExtResource("16_0g573")
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
-[connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="timeout" from="Timer" to="FiniteStateMachine/Follow" method="_on_timer_timeout"]

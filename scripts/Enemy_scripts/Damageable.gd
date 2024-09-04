@@ -4,7 +4,7 @@ class_name Damageable
 
 signal on_hit(node : Node, damage_taken : int, knockback_direction : Vector2)
 
-@export var health : float = 10 :
+@export var health : float = 100 :
 	get:
 		return health
 	set(value):
