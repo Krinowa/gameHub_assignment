@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://vvmnfa2o1way"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_jc5kt"]
+[ext_resource type="Texture2D" uid="uid://bgy1g8fdvx3ii" path="res://assets/Enemy_Galore_I/Boss/GolemBoss/weapon PNG/arm_projectile_glowing.png" id="2_jwb4e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ykt1"]
+atlas = ExtResource("2_jwb4e")
+region = Rect2(50, 25, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gx4s"]
+atlas = ExtResource("2_jwb4e")
+region = Rect2(150, 25, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fas7"]
+atlas = ExtResource("2_jwb4e")
+region = Rect2(250, 25, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lq4f"]
+atlas = ExtResource("2_jwb4e")
+region = Rect2(50, 125, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2uy5"]
+atlas = ExtResource("2_jwb4e")
+region = Rect2(150, 125, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhc22"]
+atlas = ExtResource("2_jwb4e")
+region = Rect2(250, 125, 50, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyeqb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ykt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gx4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fas7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lq4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2uy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhc22")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3k8xm"]
+size = Vector2(37.1641, 20)
+
+[node name="bullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_jc5kt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.36424e-12, -24)
+scale = Vector2(0.97, 1.13)
+sprite_frames = SubResource("SpriteFrames_wyeqb")
+animation = &"new_animation"
+frame_progress = 0.964115
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_3k8xm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

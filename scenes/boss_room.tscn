@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b78enlw1wy8b0"]
+
+[ext_resource type="PackedScene" uid="uid://bjhwey1yudfa1" path="res://scenes/Enemy/golem_boss.tscn" id="1_lgfsc"]
+[ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player/player.tscn" id="2_05mjd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ld81a"]
+size = Vector2(43, 396.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h22vb"]
+size = Vector2(1164, 33)
+
+[node name="BossRoom" type="Node2D"]
+
+[node name="GolemBoss" parent="." instance=ExtResource("1_lgfsc")]
+position = Vector2(506, 239)
+
+[node name="Player" parent="." instance=ExtResource("2_05mjd")]
+position = Vector2(252, 305)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(32, 211)
+shape = SubResource("RectangleShape2D_ld81a")
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(592, 345)
+shape = SubResource("RectangleShape2D_h22vb")
