@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://b53hqmp431avk"]
+
+[ext_resource type="Texture2D" uid="uid://c000o2dxgjlg3" path="res://assets/Enemy_Galore_I/Boss/GolemBoss/Blue Effect Bullet Impact Explosion 32x32.png" id="1_bg2uo"]
+[ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/electric_ball.gd" id="1_yvob0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5bjc"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd5c6"]
+atlas = ExtResource("1_bg2uo")
+region = Rect2(352, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3m1h"]
+atlas = ExtResource("1_bg2uo")
+region = Rect2(384, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv63f"]
+atlas = ExtResource("1_bg2uo")
+region = Rect2(416, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08iey"]
+atlas = ExtResource("1_bg2uo")
+region = Rect2(448, 288, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ysklp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd5c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3m1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv63f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08iey")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_yvob0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(56, 8)
+shape = SubResource("CircleShape2D_p5bjc")
+debug_color = Color(0.559113, 0.396312, 1, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(56, 8)
+sprite_frames = SubResource("SpriteFrames_ysklp")
+autoplay = "default"
+frame_progress = 0.794888
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

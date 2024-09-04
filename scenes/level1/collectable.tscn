@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6axc2o6ch2wa"]
+
+[ext_resource type="Script" path="res://scenes/level1/collectable.gd" id="1_03yci"]
+[ext_resource type="Texture2D" uid="uid://7y8pwx3jga87" path="res://assets/Forest Tileset/collectable/47.png" id="1_5xvsd"]
+[ext_resource type="Texture2D" uid="uid://deb4gwfxw14o0" path="res://assets/Forest Tileset/collectable/Collected.png" id="3_srri6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcg8g"]
+size = Vector2(40, 40)
+
+[sub_resource type="Gradient" id="Gradient_ffyhx"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_te1k6"]
+gradient = SubResource("Gradient_ffyhx")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwfa5"]
+atlas = ExtResource("3_srri6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r81n6"]
+atlas = ExtResource("3_srri6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjwkh"]
+atlas = ExtResource("3_srri6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s5cq"]
+atlas = ExtResource("3_srri6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpu6e"]
+atlas = ExtResource("3_srri6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxtl4"]
+atlas = ExtResource("3_srri6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sev5d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwfa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r81n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjwkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s5cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpu6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxtl4")
+}],
+"loop": false,
+"name": &"Collected",
+"speed": 8.0
+}]
+
+[node name="collectable1" type="Area2D"]
+position = Vector2(56, 56)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_03yci")
+metadata/_edit_horizontal_guides_ = [64.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.99999, -4.00001)
+shape = SubResource("RectangleShape2D_bcg8g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.99999, -4.00001)
+scale = Vector2(0.21875, 0.21875)
+texture = ExtResource("1_5xvsd")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-3.99999, -4.00001)
+scale = Vector2(0.625, 0.625)
+color = Color(1, 1, 0, 1)
+texture = SubResource("GradientTexture2D_te1k6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.99999, -4.00001)
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_sev5d")
+animation = &"Collected"
+frame = 5
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
