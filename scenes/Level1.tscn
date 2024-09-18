@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://butlwftqi2lk1"]
+[gd_scene load_steps=14 format=3 uid="uid://butlwftqi2lk1"]
 
 [ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player/player.tscn" id="1_8p1qt"]
 [ext_resource type="Texture2D" uid="uid://dcp3a1gaapl71" path="res://assets/Forest Tileset/jungle tileset.png" id="2_gmeha"]
@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://buqaavnxawet" path="res://assets/Forest Tileset/parallax background(current)/layers/parallax-demon-woods-mid-trees.png" id="6_k6a04"]
 [ext_resource type="Texture2D" uid="uid://bornjdcfq6dro" path="res://assets/Forest Tileset/parallax background(current)/layers/parallax-demon-woods-close-trees.png" id="7_g6sjc"]
 [ext_resource type="PackedScene" uid="uid://byqps4nc1fynv" path="res://scenes/Enemy/thorn.tscn" id="8_rli07"]
-[ext_resource type="PackedScene" uid="uid://bjhwey1yudfa1" path="res://scenes/Enemy/golem_boss.tscn" id="9_whgs2"]
+[ext_resource type="PackedScene" uid="uid://b5lf8oxoojqrf" path="res://scenes/Enemy/golem_boss.tscn" id="9_whgs2"]
 [ext_resource type="PackedScene" uid="uid://b6axc2o6ch2wa" path="res://scenes/level1/collectable.tscn" id="9_xywse"]
-[ext_resource type="Texture2D" uid="uid://dtaptk2ef5tsw" path="res://assets/Forest Tileset/environment/mage_guardian-blue.png" id="10_b83yb"]
+[ext_resource type="PackedScene" uid="uid://cytq7yts8akup" path="res://scenes/level1/NPC.tscn" id="11_2ttxm"]
 [ext_resource type="PackedScene" uid="uid://febyj4360lu5" path="res://scenes/health/health_changed_manager.tscn" id="11_nm5f3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mmr5"]
@@ -1178,113 +1178,10 @@ texture = ExtResource("2_gmeha")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4mmr5")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vwuwq"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptmxp"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bubcp"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pr36j"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7k213"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3cdw"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_onkl6"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ksys"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j206k"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qoaew"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(576, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bo456"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(640, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uctdk"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(704, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t30rv"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(768, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l6hm5"]
-atlas = ExtResource("10_b83yb")
-region = Rect2(832, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mr5d3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vwuwq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ptmxp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bubcp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pr36j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7k213")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p3cdw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_onkl6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ksys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j206k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qoaew")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bo456")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uctdk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t30rv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l6hm5")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
 [node name="Level1" type="Node2D"]
+
+[node name="Npc" parent="." instance=ExtResource("11_2ttxm")]
+position = Vector2(336, 408)
 
 [node name="Player" parent="." instance=ExtResource("1_8p1qt")]
 position = Vector2(233, 433)
@@ -1296,6 +1193,7 @@ position = Vector2(1176, 192)
 position = Vector2(1688, 400)
 
 [node name="Background" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="Layer1" type="ParallaxLayer" parent="Background"]
 position = Vector2(-51, -84)
@@ -1356,15 +1254,8 @@ position = Vector2(1272, 608)
 [node name="collectable5" parent="." instance=ExtResource("9_xywse")]
 position = Vector2(2488, 232)
 
-[node name="magicGuardian" type="AnimatedSprite2D" parent="."]
-position = Vector2(4488, 320)
-scale = Vector2(1.75, 1.875)
-sprite_frames = SubResource("SpriteFrames_mr5d3")
-autoplay = "default"
-frame_progress = 0.155004
-
 [node name="GolemBoss" parent="." instance=ExtResource("9_whgs2")]
-position = Vector2(384, 384)
+position = Vector2(-16, 400)
 
 [node name="HealthChangedManager" parent="." instance=ExtResource("11_nm5f3")]
 metadata/_edit_use_anchors_ = true

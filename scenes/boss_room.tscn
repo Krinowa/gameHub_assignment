@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b78enlw1wy8b0"]
+[gd_scene load_steps=5 format=3 uid="uid://fausgxprsqe2"]
 
-[ext_resource type="PackedScene" uid="uid://bjhwey1yudfa1" path="res://scenes/Enemy/golem_boss.tscn" id="1_lgfsc"]
+[ext_resource type="PackedScene" uid="uid://b5lf8oxoojqrf" path="res://scenes/Enemy/golem_boss.tscn" id="1_lgfsc"]
 [ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player/player.tscn" id="2_05mjd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ld81a"]

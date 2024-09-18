@@ -1,0 +1,139 @@
+[gd_scene load_steps=19 format=3 uid="uid://cytq7yts8akup"]
+
+[ext_resource type="Script" path="res://scripts/Level1_scripts/NPC.gd" id="1_85tsm"]
+[ext_resource type="Texture2D" uid="uid://baysdpjuu8gg3" path="res://assets/Forest Tileset/NPC/mage_guardian-red.png" id="2_ot154"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw7ea"]
+atlas = ExtResource("2_ot154")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1sha"]
+atlas = ExtResource("2_ot154")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5slvb"]
+atlas = ExtResource("2_ot154")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t00g"]
+atlas = ExtResource("2_ot154")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si4s4"]
+atlas = ExtResource("2_ot154")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mynb5"]
+atlas = ExtResource("2_ot154")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6vd1"]
+atlas = ExtResource("2_ot154")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t8cl"]
+atlas = ExtResource("2_ot154")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0bsb"]
+atlas = ExtResource("2_ot154")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgedb"]
+atlas = ExtResource("2_ot154")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n2nm"]
+atlas = ExtResource("2_ot154")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcb65"]
+atlas = ExtResource("2_ot154")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyicf"]
+atlas = ExtResource("2_ot154")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsq7g"]
+atlas = ExtResource("2_ot154")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13xya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1sha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5slvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t00g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si4s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mynb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6vd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t8cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0bsb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgedb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n2nm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcb65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyicf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsq7g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8n7jn"]
+radius = 72.5
+
+[node name="Npc" type="Node2D"]
+script = ExtResource("1_85tsm")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -64.0
+offset_top = -48.0
+offset_right = 76.0
+offset_bottom = -25.0
+text = "Press 'E' to interact"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_13xya")
+autoplay = "default"
+frame_progress = 0.563301
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_8n7jn")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
