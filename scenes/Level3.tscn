@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d267rviacdre6" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/1.png" id="12_7ehua"]
 [ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player/player.tscn" id="14_8vwyt"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/skeleton_place.gd" id="17_4qwnv"]
-[ext_resource type="PackedScene" uid="uid://o40cye3cl0hj" path="res://scenes/enemy/skeleton.tscn" id="17_prgiv"]
+[ext_resource type="PackedScene" uid="uid://o40cye3cl0hj" path="res://scenes/Enemy/skeleton.tscn" id="17_prgiv"]
 [ext_resource type="PackedScene" uid="uid://g01ereyudnj2" path="res://scenes/traps/swing_spike_club_position.tscn" id="17_vapvn"]
 [ext_resource type="PackedScene" uid="uid://cx73egxdiu1sw" path="res://scenes/platform/falling_platform.tscn" id="19_daujf"]
 [ext_resource type="PackedScene" uid="uid://c1e35qgw5vkf4" path="res://scenes/level_3/ground_button.tscn" id="19_sv0d3"]

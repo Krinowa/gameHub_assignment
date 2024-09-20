@@ -1255,7 +1255,7 @@ position = Vector2(1272, 608)
 position = Vector2(2488, 232)
 
 [node name="GolemBoss" parent="." instance=ExtResource("9_whgs2")]
-position = Vector2(-16, 400)
+position = Vector2(-35, 429)
 
 [node name="HealthChangedManager" parent="." instance=ExtResource("11_nm5f3")]
 metadata/_edit_use_anchors_ = true
