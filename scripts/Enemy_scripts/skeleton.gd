@@ -29,15 +29,14 @@ func move_char():
 	#velocity.x = -speed
 
 #if detected player body enter the skeleton detected area, perform attack action
-func _on_detect_player_body_entered(body):
-	if body.is_in_group('player'):
+func _on_detect_player_area_entered(area):
+	if area.get_parent() is Player:
 		velocity.x = 0
 		$AnimationPlayer.play("attack")
 
-
 #if detected player body exit the skeleton detected area, perform walk action
-func _on_detect_player_body_exited(body):
-	if body.is_in_group('player') and health > 0:
+func _on_detect_player_area_exited(area):
+	if area.get_parent() is Player and health > 0:
 		$AnimationPlayer.play("walk")
 
 # For skeleton place area function
@@ -50,14 +49,24 @@ func change_state():
 	scale.x *= -1  # use scale.x able to change sprite and collision box direction together
 
 # when the player enter the attack to player collision, call the attack_detect function in player node
-func _on_attack_to_player_body_entered(body):
-	if body.is_in_group('player'):
-		body.attack_detect()
+#func _on_attack_to_player_body_entered(body):
+	#if body.is_in_group('player'):
+		#body.attack_detect()
+
+func _on_attack_to_player_area_entered(area):
+	var player = area.get_parent()  # Assuming the player is the parent of the area
+	if player.is_in_group('player'):
+		player.attack_detect()
+
 
 # when detect player at the back, change the direction
-func _on_player_is_back_body_entered(body):
-	if body.is_in_group('player'):
+#func _on_player_is_back_body_entered(body):
+	#if body.is_in_group('player'):
+		#change_state()
+func _on_player_is_back_area_entered(area):
+	if area.get_parent() is Player:
 		change_state()
+
 
 func attacked(damage):
 	$TextureProgressBar.visible = true
@@ -73,3 +82,15 @@ func attacked(damage):
 
 func _on_timer_timeout():
 	$TextureProgressBar.visible = false
+
+
+
+
+
+
+
+
+
+
+
+

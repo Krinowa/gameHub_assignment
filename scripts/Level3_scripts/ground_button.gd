@@ -40,6 +40,10 @@ func _on_pressed_detector_body_entered(body):
 		if is_button_pressed == false:
 			press_button()
 
+#func _on_player_is_back_area_entered(area):
+	#if area.get_parent() is Player:
+		#change_state()
+
 # if the body exited the pressedDetector and the button is pressed, then unpressed the button
 func _on_pressed_detector_body_exited(body):
 	if body.is_in_group('rigidBox') or body.is_in_group('player'):

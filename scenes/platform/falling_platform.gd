@@ -13,8 +13,12 @@ func _physics_process(delta):
 	move_and_slide()
 
 # Once detect player jump onto the platform, play the shake animation and call fall function
-func _on_player_entered_body_entered(body):
-	if body.is_in_group('player'):
+#func _on_player_entered_body_entered(body):
+	#if body.is_in_group('player'):
+		#$AnimationPlayer.play('shake')
+
+func _on_player_entered_area_entered(area):
+	if area.get_parent() is Player:
 		$AnimationPlayer.play('shake')
 
 # This function fall is call from AnimationPlayer
@@ -29,3 +33,6 @@ func _on_timer_timeout():
 	velocity = Vector2.ZERO # Reset velocity to zero
 	position = original_position  # Move platform back to original position
 	is_fall = true  # Reset the falling state to true so it not to fall again
+
+
+
