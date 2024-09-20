@@ -2640,13 +2640,13 @@ scale = Vector2(1.5, 1.5)
 [node name="FallingSpikes" parent="." instance=ExtResource("24_laaam")]
 position = Vector2(1088, 180)
 
-[node name="RayCast2D" parent="FallingSpikes" index="2"]
+[node name="RayCast2D" parent="FallingSpikes" index="3"]
 target_position = Vector2(0, 130)
 
 [node name="FallingSpikes2" parent="." instance=ExtResource("24_laaam")]
 position = Vector2(533, 244)
 
-[node name="RayCast2D" parent="FallingSpikes2" index="2"]
+[node name="RayCast2D" parent="FallingSpikes2" index="3"]
 target_position = Vector2(0, 170)
 
 [connection signal="body_entered" from="Skeleton_place/Area2D" to="Skeleton_place" method="_on_area_2d_body_entered"]
