@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/Level1_scripts/collectable.gd" id="1_03yci"]
 [ext_resource type="Texture2D" uid="uid://7y8pwx3jga87" path="res://assets/Forest Tileset/collectable/47.png" id="1_5xvsd"]
-[ext_resource type="Script" path="res://scripts/Level1_scripts/collectable.gd" id="1_y1u2d"]
 [ext_resource type="Texture2D" uid="uid://deb4gwfxw14o0" path="res://assets/Forest Tileset/collectable/Collected.png" id="3_srri6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcg8g"]
@@ -70,7 +69,7 @@ animations = [{
 position = Vector2(56, 56)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_y1u2d")
+script = ExtResource("1_03yci")
 metadata/_edit_horizontal_guides_ = [64.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

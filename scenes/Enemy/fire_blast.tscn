@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://di8c071waafj2"]
 
-[ext_resource type="Script" path="res://fire_blast.gd" id="1_a5ns2"]
+[ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/fire_blast.gd" id="1_a5ns2"]
 [ext_resource type="Texture2D" uid="uid://cuyqrkxsw82wg" path="res://assets/Enemy_Galore_I/Boss/GolemBoss/Red Effect Bullet Impact Explosion 32x32.png" id="2_b66kv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_71lma"]
