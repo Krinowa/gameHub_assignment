@@ -2,45 +2,47 @@ extends CharacterBody2D
 
 class_name Player
 
+# Nodes and SFX
 #signal update_ui 
-
-@onready var camera = $Camera
+@onready var timer = $Timer
 @onready var jump_sfx = $SFX/JumpSFX as AudioStreamPlayer2D
 @onready var attack_sfx = $SFX/AttackSFX as AudioStreamPlayer2D
 @onready var dead_sfx = $SFX/DeadSFX as AudioStreamPlayer2D
 @onready var dash_sfx = $SFX/DashSFX as AudioStreamPlayer2D
-
 @onready var animated_sprite_player = $AnimatedSprite2D
+@onready var damageable = $Damageable
 
-# changed
+@export var knockback_speed : float = 500.0
+
 var save_file_path = "user://save/"
 var save_file_name = "PlayerSave.tres"
-
 # Access everything from the PlayerData with default value if it is not loaded
 var playerData = PlayerData.new()
 
 # Access the speed and jump_velocity variable from PlayerData
 # Variables doest need anymore since we retrieve from PlayerData
 
-# var health = 100 
-# const SPEED = 200.0
-# const JUMP_VELOCITY = -400.0
+# Combo Variables
+const COMBO_TIME_LIMIT = 0.5
+var combo_timer = 0.0
+var combo_stage = 0
+var combo_attack_count = 0
+
 const DASH_SPEED = 600.0
 const DASH_TIME = 0.2
-const DASH_ACCELERATION = 3000.0  # Acceleration towards dash speed
-const DASH_DECELERATION = 3000.0  # Deceleration after dash ends
-const DASH_COOLDOWN = 1.0  # Cooldown time in seconds
-const WALL_JUMP_FORCE_X = 300.0  # Horizontal force applied when wall jumping
-const WALL_SLIDE_SPEED = 50.0  # Speed of sliding down the wall
+const DASH_ACCELERATION = 3000.0
+const DASH_DECELERATION = 3000.0
+const DASH_COOLDOWN = 1.0
+const WALL_JUMP_FORCE_X = 300.0
+const WALL_SLIDE_SPEED = 50.0
 const MAX_HEALTH = 100
-# changed  
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var isAttacking = false
 var isDashing = false
 var dash_time_left = 0.0
 var dash_target_speed = 0.0
-var dash_cooldown_timer = 0.0  # Tracks the cooldown time manually
+var dash_cooldown_timer = 0.0
 var isOnWall = false
 var is_wall_sliding = false
 var jump_max = 2
@@ -51,10 +53,18 @@ var health = MAX_HEALTH
 signal facing_direction_changed(facing_right : bool)
 signal health_changed(current_health : int)
 
-# changed
 func _ready():
 	# Access the save path where we going to store our data
 	verify_save_directory(save_file_path)
+	if damageable:
+		damageable.connect("on_hit", on_damageable_hit)
+	var tilemap_rect = get_parent().get_node("TileMap").get_used_rect()
+	var tilemap_cell_size = get_parent().get_node("TileMap").tile_set.tile_size
+	$Camera2D.limit_left = tilemap_rect.position.x * tilemap_cell_size.x
+	$Camera2D.limit_top = tilemap_rect.position.y * tilemap_cell_size.y
+	$Camera2D.limit_right = tilemap_rect.end.x * tilemap_cell_size.x
+	$Camera2D.limit_bottom = tilemap_rect.end.y * tilemap_cell_size.y
+	SignalBus.connect("on_key_collected", on_signal_key_collected)
 
 func verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
@@ -86,11 +96,16 @@ func _process(delta):
 	# emit the signal to the node where want to display health progress like health bar
 	# self.position not necessarily need to update to the ui but need to be save
 	# currently only getting the ui position and update to the ui without saving the position
-	emit_signal("update_ui", playerData.health, self.position)
+	#emit_signal("update_ui", playerData.health, self.position)
 	
 	# We save the position every single frame, but only retrieve the save position when load the game
 	playerData.update_position(self.position)
-# changed
+
+	# Update combo timer
+	if combo_attack_count > 0:
+		combo_timer -= delta
+		if combo_timer <= 0:
+			reset_combo()
 
 func _physics_process(delta):
 	# Add gravity if not dashing and not on a wall
@@ -100,7 +115,6 @@ func _physics_process(delta):
 	# Check for wall collision
 	if is_on_wall() and Input.is_action_pressed("move_right") and Input.is_action_just_pressed("jump"):
 		jump_count = 0
-		# changed
 		velocity.y = playerData.jump_velocity
 		velocity.x = -WALL_JUMP_FORCE_X
 	
@@ -118,7 +132,6 @@ func _physics_process(delta):
 		if dash_time_left <= 0:
 			end_dash()
 
-	# Handle jump if not wall jumping
 	if is_on_floor() and jump_count != 0:
 		jump_count = 0
 	
@@ -160,11 +173,11 @@ func _physics_process(delta):
 				animated_sprite_player.play("fall")
 
 	# Handle attack
-	if Input.is_action_just_pressed("attack") and not isAttacking and not isDashing:
-		animated_sprite_player.play("attack")
-		isAttacking = true
-		$AttackArea/CollisionShape2D.disabled = false
-		attack_sfx.play()
+	if Input.is_action_just_pressed("attack"):
+		if combo_attack_count == 0:
+			start_combo()
+		else:
+			perform_combo_attack()
 
 	# Handle movement with smoother dash
 	if isDashing and not isAttacking:
@@ -205,7 +218,7 @@ func end_dash():
 		animated_sprite_player.play("fall")
 	
 func wall_slide(delta):
-	if is_on_wall() and !is_on_floor():
+	if is_on_wall() and not is_on_floor():
 		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			is_wall_sliding = true
 		else: 
@@ -217,7 +230,7 @@ func wall_slide(delta):
 		velocity.y += (WALL_SLIDE_SPEED * delta)
 		velocity.y = min(velocity.y, WALL_SLIDE_SPEED)
 		animated_sprite_player.play("wall_slide")
-		
+
 func handle_death():
 	if is_dead:
 		return
@@ -227,30 +240,22 @@ func handle_death():
 	dead_sfx.play()
 	set_physics_process(false)
 
-func take_damage(amount):
-	health -= amount
-	emit_signal("health_changed", health)
-	if health <= 0:
+func on_damageable_hit(node : Node, damage_amount : int, knockback_direction : Vector2):
+	if(damageable.health > 0):
+		velocity = knockback_speed * knockback_direction
+	else:
 		handle_death()
+		timer.start()
 
-#changed on add comment only -> # When press attack, the attack area change to true to hit the enemy
 # Animation looped callback
 func _on_animated_sprite_2d_animation_looped():
-	if animated_sprite_player.animation == "attack":
+	if animated_sprite_player.animation == "attack" || animated_sprite_player.animation == "attack_2" || animated_sprite_player.animation == "attack_3":
 		$AttackArea/CollisionShape2D.disabled = true
 		isAttacking = false
 
-# changed
-# Detect the hit by skeleton enemy and deduct the health level
+# testing purpose
 func attack_detect():
 	print('hit')
-
-# Change the health value directly in the playerData file everytime change of health value of player
-# Because we are retrieving the health value from the playerData file
-# The playerData file can save directly
-#use take_datam
-#func take_damage():
-	#playerData.change_health(-5)
 
 func gain_health():
 	playerData.change_health(5)
@@ -259,6 +264,49 @@ func _on_control_change_health(action):
 	if action == "+":
 		gain_health()
 	elif action == "-":
-		#take_damage()
 		pass
-# changed
+
+func _on_timer_timeout():
+	Engine.time_scale = 1.0
+	get_tree().reload_current_scene()
+
+func wait(seconds: float):
+	await get_tree().create_timer(seconds).timeout
+
+func start_combo():
+	# Start the combo sequence
+	combo_stage = 1
+	combo_attack_count = 1
+	combo_timer = COMBO_TIME_LIMIT
+	$AttackArea/CollisionShape2D.disabled = false
+	await wait(0.1) # wait the collision box enable first, then emit signal
+	SignalBus.emit_signal("on_attack_input")
+	animated_sprite_player.play("attack")
+	isAttacking = true
+	attack_sfx.play()
+
+func perform_combo_attack():
+	# Handle different combo stages
+	combo_attack_count += 1
+	combo_timer = COMBO_TIME_LIMIT
+	$AttackArea/CollisionShape2D.disabled = false
+	SignalBus.emit_signal("on_attack_input")
+	if combo_stage == 1:
+		# Second attack in the combo
+		animated_sprite_player.play("attack_2")
+		attack_sfx.play()
+		combo_stage = 2
+	elif combo_stage == 2:
+		# Third attack in the combo
+		animated_sprite_player.play("attack_3")
+		attack_sfx.play()
+		combo_stage = 3
+		reset_combo()
+
+func reset_combo():
+	combo_stage = 0
+	combo_attack_count = 0
+	combo_timer = 0.0
+
+func on_signal_key_collected(node : Node, has_key : bool):
+	print("Key collected!")

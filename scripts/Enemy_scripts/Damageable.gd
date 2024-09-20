@@ -13,6 +13,9 @@ signal on_hit(node : Node, damage_taken : int, knockback_direction : Vector2)
 
 @export var dead_animation_name : String = "dead"
 
+func set_health(initial_health: float):
+	health = initial_health
+
 func hit(damage : int, knockback_direction : Vector2):
 	health -= damage
 	print(health)

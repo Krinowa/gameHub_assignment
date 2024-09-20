@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dnjc46gvng0wc"]
+[gd_scene load_steps=27 format=3 uid="uid://dnjc46gvng0wc"]
 
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/golem.gd" id="1_dkjuh"]
 [ext_resource type="Texture2D" uid="uid://cs1motanxxeoe" path="res://assets/Enemy_Galore_I/Golem/No Armor/Golem_IdleB.png" id="1_gfpvp"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cgdwpm63tbqof" path="res://assets/Enemy_Galore_I/Golem/No Armor/Golem_HitB.png" id="2_jvs7e"]
 [ext_resource type="Script" path="res://scripts/Player_scripts/CharacterStateMachine.gd" id="4_v4iy4"]
 [ext_resource type="Script" path="res://scripts/Player_scripts/State.gd" id="5_b8ab7"]
+[ext_resource type="Script" path="res://scripts/Enemy_scripts/GolemAttackArea.gd" id="6_0kjlt"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/HitState.gd" id="6_r0cgg"]
+[ext_resource type="Script" path="res://scripts/Player_scripts/PlayerFacingCollisionShape2D.gd" id="7_61f3h"]
+[ext_resource type="PackedScene" uid="uid://bjqv7y662bns5" path="res://scenes/platform/key.tscn" id="11_f1c8x"]
 
 [sub_resource type="Animation" id="Animation_6aecf"]
 length = 0.001
@@ -244,7 +247,11 @@ states/idle/node = SubResource("AnimationNodeAnimation_irwtd")
 states/idle/position = Vector2(345, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_m7l6e"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_kx4to"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_y867a"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_usjau")]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl7cm"]
+radius = 8.66666
+
 [node name="Golem" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
+scale = Vector2(4, 4)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_dkjuh")
@@ -274,7 +281,20 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("2_3n033")
-health = 50.0
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(1, -27)
+scale = Vector2(1.5, 1.518)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("6_0kjlt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-1.33333, 21.0804)
+shape = SubResource("CircleShape2D_sl7cm")
+script = ExtResource("7_61f3h")
+facing_left_position = Vector2(-17, 3)
+facing_right_position = Vector2(17, 3)
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "animation_tree", "current_state")]
 script = ExtResource("4_v4iy4")
@@ -295,6 +315,7 @@ damageable = NodePath("../../Damageable")
 dead_state = NodePath("../dead")
 idle_state = NodePath("../idle")
 return_state = NodePath("../idle")
+key_scene = ExtResource("11_f1c8x")
 can_move = false
 
 [node name="Timer" type="Timer" parent="CharacterStateMachine/hit"]
@@ -302,4 +323,5 @@ wait_time = 0.25
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
+[connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]
 [connection signal="timeout" from="CharacterStateMachine/hit/Timer" to="CharacterStateMachine/hit" method="_on_timer_timeout"]

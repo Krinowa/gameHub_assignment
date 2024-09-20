@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjqv7y662bns5"]
+
+[ext_resource type="Texture2D" uid="uid://credhv8arhssa" path="res://assets/frozen tiles/IconsAlpha/Icons_11.png" id="1_5wsxe"]
+[ext_resource type="Script" path="res://scripts/world_scripts/key.gd" id="1_kf7bf"]
+[ext_resource type="AudioStream" uid="uid://dwlr6fe45614a" path="res://assets/sfx/winning-a-coin.wav" id="3_kvgfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sd0d"]
+size = Vector2(11, 10.5)
+
+[node name="Key" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_kf7bf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_5wsxe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.75)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_5sd0d")
+
+[node name="SoundKey" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kvgfv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="SoundKey" to="." method="_on_sound_key_finished"]
