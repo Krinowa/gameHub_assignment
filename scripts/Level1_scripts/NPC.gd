@@ -23,7 +23,7 @@ func _process(delta):
 		var collected_items = CollectableManager.total_collected_items
 		
 		# Set the dialog lines based on the collected items count
-		if collected_items >= 2:
+		if collected_items >= 5:
 			dialog_manager.start_dialog(global_position + Vector2(0, -20), dialog_lines_sufficient)
 			get_tree().change_scene_to_file("res://scenes/Level2.tscn")
 		else:
