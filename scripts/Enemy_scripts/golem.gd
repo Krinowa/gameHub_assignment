@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
+class_name Golem
+
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var golem_sprite_2d = $Sprite2D
 
 @export var starting_move_direction : Vector2 = Vector2.LEFT
 @export var movement_speed = 30.0
 @export var hit_state : State
+@export var initial_health: float = 50
 
+@onready var damageable : Damageable = $Damageable
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -14,8 +18,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player_chase = false
 var player = null
 
+signal facing_direction_changed(facing_right : bool)
+
 func _ready():
 	animation_tree.active = true
+	damageable.set_health(initial_health)
 
 func _physics_process(delta):
 	# Apply gravity if not on the floor
@@ -26,6 +33,7 @@ func _physics_process(delta):
 		# Calculate direction towards the player
 		var direction : Vector2 = (player.position - position).normalized()
 
+		emit_signal("facing_direction_changed", !golem_sprite_2d.flip_h)
 		# Flip the sprite based on the direction
 		if direction.x > 0:
 			golem_sprite_2d.flip_h = false

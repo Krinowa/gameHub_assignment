@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=4 format=3 uid="uid://b8c7ae71e81vy"]
+
+[ext_resource type="Resource" uid="uid://b2jv8ccoxuas3" path="res://npcs_dialogue/Magic Guardian/level2_1.tres" id="1_s30ev"]
+[ext_resource type="Script" path="res://scripts/UI_scripts/Dialogue/dialogue.gd" id="2_omddl"]
+[ext_resource type="Texture2D" uid="uid://cobip0a3vngx4" path="res://assets/npcs_profile/black_mage_pixel_portrait_by_davipixelart_dei0ia1-375w-2x.png" id="3_fre4x"]
+
+[resource]
+script = ExtResource("2_omddl")
+texture = ExtResource("3_fre4x")
+name = "Magic Guardian"
+dialogue = "Welcome to ICY RUIN"
+path_option = ""
+options = Array[ExtResource("2_omddl")]([ExtResource("1_s30ev")])

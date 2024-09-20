@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://0vy7d18qen8q"]
+[gd_scene load_steps=24 format=3 uid="uid://o40cye3cl0hj"]
 
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/skeleton.gd" id="1_pmjfb"]
 [ext_resource type="Texture2D" uid="uid://dc88hder5dyod" path="res://assets/level3_assets/enemy/skeleton_enemy/Skeleton enemy.png" id="2_k1q7b"]
@@ -186,12 +186,14 @@ tree_root = SubResource("AnimationNodeStateMachine_2xoqa")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Detect_player" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect_player"]
 position = Vector2(20.75, 0)
 shape = SubResource("RectangleShape2D_b7ofb")
 
 [node name="Attack_to_player" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_to_player"]
 position = Vector2(16, 0)
@@ -200,6 +202,7 @@ disabled = true
 debug_color = Color(0.601922, 0.480559, 0.674887, 0.42)
 
 [node name="Player_is_back" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_is_back"]
 position = Vector2(-39.5, 0.5)

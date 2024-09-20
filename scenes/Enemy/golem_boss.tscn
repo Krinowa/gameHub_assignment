@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bjhwey1yudfa1"]
+[gd_scene load_steps=33 format=3 uid="uid://b5lf8oxoojqrf"]
 
 [ext_resource type="Texture2D" uid="uid://csxpi5utiufwu" path="res://assets/Enemy_Galore_I/Boss/GolemBoss/PNG sheet/Character_sheet.png" id="1_anol0"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/boss/golem_boss.gd" id="1_p7hqg"]
@@ -429,12 +429,14 @@ value = 100.0
 
 [node name="Label" type="Label" parent="UI/ProgressBar"]
 layout_mode = 0
-offset_left = 51.0
+offset_left = 36.0
 offset_top = -29.0
-offset_right = 150.0
+offset_right = 177.0
 offset_bottom = -6.0
-text = "Stone Golem
+text = "The Last Guardian
 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="UI"]
 self_modulate = Color(1, 1, 1, 0)
@@ -443,12 +445,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.5
-offset_top = -11.5
-offset_right = 48.5
-offset_bottom = 11.5
+offset_left = -152.0
+offset_top = -76.0
+offset_right = 145.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 50
 text = "Boss Slained"
 
 [node name="debug" type="Label" parent="."]
@@ -476,6 +479,7 @@ debug_color = Color(0.702901, 0.272611, 1, 0.42)
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("17_g2y7q")
+health = 250.0
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("4_m1br4")

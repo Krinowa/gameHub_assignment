@@ -1,6 +1,5 @@
 [gd_scene load_steps=33 format=3 uid="uid://cv1wms8ei4n7e"]
 
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_sgpab"]
 [ext_resource type="Texture2D" uid="uid://c6wy0wsf480wc" path="res://assets/level3_assets/oak_woods_v1.0/oak_woods_tileset.png" id="1_ucj2v"]
 [ext_resource type="Texture2D" uid="uid://lf63e8gvhpig" path="res://assets/level3_assets/Free  Village Game Assets.png" id="2_0um2k"]
 [ext_resource type="Texture2D" uid="uid://cwd00w8sepx6a" path="res://assets/level3_assets/Wasteland-Files.png" id="2_m47ka"]
@@ -14,8 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://q4aa3nwagvgk" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/3.png" id="10_csgl3"]
 [ext_resource type="Texture2D" uid="uid://dv6wh6bghgrhe" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/2.png" id="11_ewqjt"]
 [ext_resource type="Texture2D" uid="uid://d267rviacdre6" path="res://assets/level3_assets/Parallax_Backgrounds_Cave/1.png" id="12_7ehua"]
+[ext_resource type="PackedScene" uid="uid://dj2t8t3jmmywx" path="res://scenes/player/player.tscn" id="14_8vwyt"]
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/skeleton_place.gd" id="17_4qwnv"]
-[ext_resource type="PackedScene" path="res://scenes/enemy/skeleton.tscn" id="17_prgiv"]
+[ext_resource type="PackedScene" uid="uid://o40cye3cl0hj" path="res://scenes/Enemy/skeleton.tscn" id="17_prgiv"]
 [ext_resource type="PackedScene" uid="uid://g01ereyudnj2" path="res://scenes/traps/swing_spike_club_position.tscn" id="17_vapvn"]
 [ext_resource type="PackedScene" uid="uid://cx73egxdiu1sw" path="res://scenes/platform/falling_platform.tscn" id="19_daujf"]
 [ext_resource type="PackedScene" uid="uid://c1e35qgw5vkf4" path="res://scenes/level_3/ground_button.tscn" id="19_sv0d3"]
@@ -2576,16 +2576,8 @@ centered = false
 position = Vector2(381.5, 337.062)
 texture = ExtResource("5_kv23c")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_sgpab")]
-position = Vector2(174.5, 353.062)
-collision_layer = 15
-collision_mask = 7
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(159.5, -87.0624)
-ignore_rotation = false
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
+[node name="Player" parent="." groups=["player"] instance=ExtResource("14_8vwyt")]
+position = Vector2(95, 366)
 
 [node name="Skeleton_place" type="Node2D" parent="."]
 script = ExtResource("17_4qwnv")
@@ -2657,7 +2649,6 @@ position = Vector2(533, 244)
 [node name="RayCast2D" parent="FallingSpikes2" index="2"]
 target_position = Vector2(0, 170)
 
-[connection signal="body_entered" from="Skeleton_place/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Skeleton_place/Area2D" to="Skeleton_place" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Skeleton_place/Area2D" to="Skeleton_place/SkeletonEnemy" method="_on_area_2d_body_entered"]
 
