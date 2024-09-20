@@ -24,6 +24,8 @@ SaveManager="*res://scripts/Global_load_scripts/SaveManager.gd"
 SoundFx="*res://scenes/UI/sound/sound_fx.tscn"
 AudioPlayer="*res://scenes/UI/sound/audio_player.tscn"
 DialogueManager="*res://scenes/npcs/dialogue_manager.tscn"
+CollectableManager="*res://scripts/Level1_scripts/CollectableManager.gd"
+DialogManager="*res://scripts/Level1_scripts/DialogManager.gd"
 
 [dotnet]
 

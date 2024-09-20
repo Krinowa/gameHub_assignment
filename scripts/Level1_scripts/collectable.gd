@@ -1,5 +1,4 @@
 extends Area2D
-
 @onready var animated = $AnimatedSprite2D
 
 func _on_body_entered(body):

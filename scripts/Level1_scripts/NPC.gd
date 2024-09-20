@@ -7,6 +7,7 @@ extends Node2D
 
 var player_near = false  # Tracks whether the player is near the NPC
 
+
 func _ready():
 	pass
 

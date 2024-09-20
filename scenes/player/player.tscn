@@ -406,7 +406,6 @@ facing_shape_2d = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(17, 3)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1h32u")
 disabled = true
 script = ExtResource("4_c32l0")
