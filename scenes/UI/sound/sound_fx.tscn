@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5bs0jwm5jc0t"]
+
+[ext_resource type="Script" path="res://scripts/Sound_scripts/sound_fx.gd" id="1_5375i"]
+[ext_resource type="AudioStream" uid="uid://s314wtk64kba" path="res://assets/sfx/Button/UI_Click.ogg" id="1_pkhdf"]
+[ext_resource type="AudioStream" uid="uid://bq8qi63ds18el" path="res://assets/sfx/Button/UI_Hover.ogg" id="3_o6cqd"]
+
+[node name="SoundFX" type="Node"]
+script = ExtResource("1_5375i")
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_pkhdf")
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o6cqd")

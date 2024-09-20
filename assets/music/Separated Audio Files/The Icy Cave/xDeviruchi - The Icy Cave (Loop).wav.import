@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcpsuw5u172hi"
+path="res://.godot/imported/xDeviruchi - The Icy Cave (Loop).wav-27b1c397113b1cef14717f397410cbc5.sample"
+
+[deps]
+
+source_file="res://assets/music/Separated Audio Files/The Icy Cave/xDeviruchi - The Icy Cave (Loop).wav"
+dest_files=["res://.godot/imported/xDeviruchi - The Icy Cave (Loop).wav-27b1c397113b1cef14717f397410cbc5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

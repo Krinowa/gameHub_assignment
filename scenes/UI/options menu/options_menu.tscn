@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://cksj7mbt4j3ud"]
+
+[ext_resource type="Script" path="res://scripts/UI_scripts/options_menu.gd" id="1_h83gg"]
+[ext_resource type="PackedScene" uid="uid://bma5g7m3ewdby" path="res://scenes/UI/options menu/setting_tab_container.tscn" id="2_3n4q6"]
+[ext_resource type="FontFile" uid="uid://c6qqt7umpvcxx" path="res://assets/ui_backgrounds/fonts/MinimalPixel v2.ttf" id="2_dafft"]
+[ext_resource type="Theme" uid="uid://d3wkmp48nyaou" path="res://scenes/resources/ui/longButton.tres" id="4_7oapu"]
+
+[sub_resource type="Theme" id="Theme_0h8lk"]
+
+[sub_resource type="Theme" id="Theme_fs01v"]
+
+[node name="Options_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0h8lk")
+script = ExtResource("1_h83gg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dafft")
+theme_override_font_sizes/font_size = 45
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Setting_tab_container" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_3n4q6")]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_fs01v")
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("4_7oapu")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_dafft")
+text = "Exit"
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Exit_Button" to="." method="_on_exit_button_mouse_entered"]

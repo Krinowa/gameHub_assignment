@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://byhyi8x8i66d5"]
+
+[ext_resource type="Script" path="res://PoisonMushroom.gd" id="1_omwqp"]
+[ext_resource type="Texture2D" uid="uid://bqou11f6hitbd" path="res://assets/level4/background/_0000_Layer-1.png" id="2_angg8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_if3a3"]
+radius = 16.0
+height = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ud5ok"]
+radius = 14.3178
+
+[node name="PoisonMushroom" type="StaticBody2D"]
+light_mask = 0
+visibility_layer = 6
+script = ExtResource("1_omwqp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.75, -7)
+scale = Vector2(0.928571, 1)
+texture = ExtResource("2_angg8")
+
+[node name="Detection_area" type="Area2D" parent="."]
+light_mask = 0
+visibility_layer = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_area"]
+position = Vector2(-2, -2)
+shape = SubResource("CapsuleShape2D_if3a3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_ud5ok")
+
+[connection signal="body_entered" from="Detection_area" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,155 @@
+[gd_scene load_steps=14 format=3 uid="uid://diy8yyiuwoopp"]
+
+[ext_resource type="Script" path="res://MushroomandFrog.gd" id="1_0defc"]
+[ext_resource type="Texture2D" uid="uid://bqou11f6hitbd" path="res://assets/level4/background/_0000_Layer-1.png" id="2_b3gc5"]
+[ext_resource type="Texture2D" uid="uid://drnati4125we2" path="res://assets/level4/background/frog_dead.png" id="3_il1ts"]
+[ext_resource type="Texture2D" uid="uid://d4i7kuma0ldsi" path="res://assets/level4/background/0__0004_Layer-5.png" id="4_nus7k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4shw"]
+radius = 12.4782
+height = 35.566
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4vjm"]
+size = Vector2(39.1937, 33.6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6cuv"]
+size = Vector2(50.2963, 33.2258)
+
+[sub_resource type="Animation" id="Animation_yn1qt"]
+resource_name = "MushroomUp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mushroom:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_b3gc5")]
+}
+
+[sub_resource type="Animation" id="Animation_m4uni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mushroom:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_b3gc5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frog:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lcvgp"]
+resource_name = "MushroomDown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mushroom:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_nus7k")]
+}
+
+[sub_resource type="Animation" id="Animation_bqkpt"]
+resource_name = "Frog_dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frog:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.129412, 0.129412, 1), Color(1, 1, 1, 1), Color(1, 0.129412, 0.129412, 1), Color(1, 1, 1, 1), Color(1, 0.129412, 0.129412, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1t5fy"]
+resource_name = "Frogidle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frog:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02jww"]
+_data = {
+"Frog_dead": SubResource("Animation_bqkpt"),
+"Frogidle": SubResource("Animation_1t5fy"),
+"MushroomDown": SubResource("Animation_lcvgp"),
+"MushroomUp": SubResource("Animation_yn1qt"),
+"RESET": SubResource("Animation_m4uni")
+}
+
+[node name="MushroomandFrog" type="Node2D"]
+position = Vector2(0, 3)
+script = ExtResource("1_0defc")
+
+[node name="Mushroom" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+scale = Vector2(0.942546, 1.07143)
+texture = ExtResource("2_b3gc5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Mushroom"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mushroom/StaticBody2D"]
+position = Vector2(-3.18287, 0)
+shape = SubResource("CapsuleShape2D_x4shw")
+
+[node name="Area2D" type="Area2D" parent="Mushroom"]
+position = Vector2(1.06096, -2.8)
+collision_layer = 0
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mushroom/Area2D"]
+position = Vector2(-2.12191, 2.8)
+shape = SubResource("RectangleShape2D_x4vjm")
+
+[node name="Frog" type="Sprite2D" parent="."]
+position = Vector2(370, -18)
+scale = Vector2(0.84375, 0.775)
+texture = ExtResource("3_il1ts")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Frog"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Frog/StaticBody2D"]
+position = Vector2(1.18519, 5.16129)
+shape = SubResource("RectangleShape2D_p6cuv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_02jww")
+}
+
+[connection signal="body_entered" from="Mushroom/Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://f5gjilf0qin7"]
+
+[ext_resource type="Script" path="res://scripts/UI_scripts/subtitles_toggle_button.gd" id="1_5dd43"]
+[ext_resource type="FontFile" uid="uid://c6qqt7umpvcxx" path="res://assets/ui_backgrounds/fonts/MinimalPixel v2.ttf" id="2_x4cgb"]
+
+[node name="Subtitles_Toggle_Button" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5dd43")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 64
+
+[node name="Name_Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x4cgb")
+theme_override_font_sizes/font_size = 32
+text = "Subtitles"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 124
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(55, 70)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 124
+
+[node name="State_Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x4cgb")
+theme_override_font_sizes/font_size = 32
+text = "Off"

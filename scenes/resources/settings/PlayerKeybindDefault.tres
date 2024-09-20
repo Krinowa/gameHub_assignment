@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerKeybindResource" load_steps=3 format=3 uid="uid://447ossbn0kik"]
+
+[ext_resource type="Script" path="res://scenes/resources/settings/PlayerKeybindResource.gd" id="1_i2tjo"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_hun7h"]
+device = -1
+physical_keycode = 65
+unicode = 97
+
+[resource]
+script = ExtResource("1_i2tjo")
+DEFAULT_MOVE_LEFT_KEY = SubResource("InputEventKey_hun7h")

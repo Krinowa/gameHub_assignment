@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6ab45gxvwle8"]
+
+[ext_resource type="Script" path="res://DangerZone.gd" id="1_0msc8"]
+[ext_resource type="Texture2D" uid="uid://b84sdrjkxg58b" path="res://assets/level4/background/plant-small.png" id="2_1e6cu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qusvw"]
+size = Vector2(60, 27.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ku6qx"]
+size = Vector2(67, 26)
+
+[node name="DangerZone" type="Node2D"]
+script = ExtResource("1_0msc8")
+
+[node name="Plant-small" type="Sprite2D" parent="."]
+position = Vector2(-1.13687e-13, 5.68434e-14)
+scale = Vector2(0.203704, 0.21875)
+texture = ExtResource("2_1e6cu")
+
+[node name="HitPoint" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitPoint"]
+position = Vector2(-3, 3)
+shape = SubResource("RectangleShape2D_qusvw")
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+position = Vector2(-6, 4)
+shape = SubResource("RectangleShape2D_ku6qx")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="HitPoint" to="." method="_on_hit_point_body_entered"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

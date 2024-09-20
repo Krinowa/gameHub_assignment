@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6y0romxmqw4p"]
+
+[ext_resource type="Texture2D" uid="uid://bqou11f6hitbd" path="res://assets/level4/background/_0000_Layer-1.png" id="1_piqbe"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(347, 28)
+scale = Vector2(1, 1.36486)
+texture = ExtResource("1_piqbe")
