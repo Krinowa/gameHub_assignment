@@ -52,8 +52,7 @@ polygon = PackedVector2Array(-14, 0, -6, -3, -6, -3, 6, -3, 15, 0)
 
 [node name="PressedDetector" type="Area2D" parent="."]
 position = Vector2(0, -4)
-collision_layer = 4
-collision_mask = 5
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PressedDetector"]
 position = Vector2(0, -1)
