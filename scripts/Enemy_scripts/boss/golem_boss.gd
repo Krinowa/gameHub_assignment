@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var character : CharacterBody2D
 @onready var damageable = $Damageable
 
+
+
 var direction : Vector2
 var DEF = 0
  
@@ -19,17 +21,8 @@ func on_damageable_hit(node : Node, damage_amount : int, knockback_direction : V
 
 
 func _ready():
-	damageable.connect("on_hit", on_damageable_hit)
-
-func on_damageable_hit(node : Node, damage_amount : int, knockback_direction : Vector2):
-	# Update the progress bar based on damageable health
-	progress_bar.value = (damageable.health / 250) * 100
-
-	if damageable.health <= 0:
-		# Handle the boss death state
-		progress_bar.visible = false
-		find_child("FiniteStateMachine").change_state("Death")
-		get_parent().queue_free()
+	set_physics_process(false)
+	damageable.connect("on_hit", _on_damageable_on_hit)
 
 func _process(_delta):
 	direction = player.position - position
