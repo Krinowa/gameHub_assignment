@@ -1181,7 +1181,7 @@ sources/0 = SubResource("TileSetAtlasSource_4mmr5")
 [node name="Level1" type="Node2D"]
 
 [node name="Npc" parent="." instance=ExtResource("11_2ttxm")]
-position = Vector2(336, 408)
+position = Vector2(3947, 341)
 
 [node name="Player" parent="." instance=ExtResource("1_8p1qt")]
 position = Vector2(233, 433)

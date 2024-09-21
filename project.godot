@@ -26,8 +26,8 @@ AudioPlayer="*res://scenes/UI/sound/audio_player.tscn"
 NavigationManager="*res://scripts/Global_load_scripts/navigation_manager.gd"
 TransitionScreen="*res://scenes/world/transition_screen.tscn"
 DialogueManager="*res://scenes/npcs/dialogue_manager.tscn"
-CollectableManager="*res://scripts/Level1_scripts/CollectableManager.gd"
 DialogManager="*res://scripts/Level1_scripts/DialogManager.gd"
+CollectableManager="*res://scripts/Level1_scripts/CollectableManager.gd"
 
 [dotnet]
 

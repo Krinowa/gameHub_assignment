@@ -1,23 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd5vmhwxcvbfj"]
+[gd_scene load_steps=5 format=3 uid="uid://cd5vmhwxcvbfj"]
 
 [ext_resource type="Script" path="res://scripts/Level3_scripts/falling_spikes.gd" id="1_foknu"]
 [ext_resource type="Texture2D" uid="uid://dpnghs638on8s" path="res://assets/level3_assets/world_objects/misc_sheet.png" id="2_f8w5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w476u"]
+size = Vector2(14, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4ooy"]
 size = Vector2(14, 10)
 
 [node name="FallingSpikes" type="CharacterBody2D"]
-collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_foknu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_w476u")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_p4ooy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_f8w5n")
 vframes = 12
 frame = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_p4ooy")
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 3
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
