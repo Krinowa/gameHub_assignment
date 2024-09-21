@@ -372,7 +372,7 @@ size = Vector2(29, 44)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 15
 script = ExtResource("1_ju1bf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -398,8 +398,8 @@ shape = SubResource("RectangleShape2D_jban1")
 [node name="AttackArea" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape_2d")]
 position = Vector2(1, -27)
 scale = Vector2(1.5, 1.518)
-collision_layer = 0
-collision_mask = 12
+collision_layer = 2
+collision_mask = 14
 script = ExtResource("3_wuxtq")
 player = NodePath("..")
 facing_shape_2d = NodePath("CollisionShape2D")
