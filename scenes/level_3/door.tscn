@@ -1,14 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://d00widjriaupx"]
+[gd_scene load_steps=4 format=3 uid="uid://d00widjriaupx"]
 
 [ext_resource type="Script" path="res://scripts/Level3_scripts/door.gd" id="1_erke5"]
+[ext_resource type="Texture2D" uid="uid://da5yuldwfe21m" path="res://assets/Demon_Door/!Demon Door.png" id="2_2e6ua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hq63o"]
-size = Vector2(20, 92.5)
+size = Vector2(110, 95.25)
 
 [node name="Door" type="Area2D"]
 script = ExtResource("1_erke5")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.999998, 0)
+scale = Vector2(0.720779, 0.680556)
+texture = ExtResource("2_2e6ua")
+region_enabled = true
+region_rect = Rect2(43, 485, 154, 144)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1.375)
 shape = SubResource("RectangleShape2D_hq63o")
 
 [node name="Spawn" type="Marker2D" parent="."]

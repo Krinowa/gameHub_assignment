@@ -5,6 +5,8 @@ var speed = 100 # Horizontal movement speed
 var direction = 1 # 1 for right, -1 for left
 var turned_side
 var health = 100
+
+@export var damage : int = 10
 @onready var state_machine = $AnimationTree.get('parameters/playback')
 
 @onready var animated_sprite = $Sprite2D # Adjust the path to your sprite node
@@ -82,6 +84,27 @@ func attacked(damage):
 
 func _on_timer_timeout():
 	$TextureProgressBar.visible = false
+
+
+
+func _on_attack_to_player_body_entered(body):
+	#if body.name == "player":
+		#velocity.x = 0
+		#$AnimationPlayer.play("attack")
+	
+	for child in body.get_children():
+		if child is Damageable:
+			# Get the direction from the hit area to the body
+			var direction_to_damageable = (body.global_position - get_parent().global_position)
+			var direction_sign = sign(direction_to_damageable.x)
+			
+			if(direction_sign > 0):
+				child.hit(damage, Vector2.RIGHT)
+			elif(direction_sign < 0):
+				child.hit(damage, Vector2.LEFT)
+			else:
+				child.hit(damage, Vector2.ZERO)
+
 
 
 

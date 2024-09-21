@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dj2t8t3jmmywx"]
+[gd_scene load_steps=74 format=3 uid="uid://dj2t8t3jmmywx"]
 
 [ext_resource type="Script" path="res://scripts/Player_scripts/player.gd" id="1_ju1bf"]
 [ext_resource type="Texture2D" uid="uid://cvemrma3ocmtt" path="res://assets/adventurer/Adventurer-1.5/adventurer-v1.5-Sheet.png" id="3_cfbsk"]
@@ -49,6 +49,8 @@
 [ext_resource type="Script" path="res://scripts/Enemy_scripts/Damageable.gd" id="33_tc543"]
 [ext_resource type="AudioStream" uid="uid://cgjkfawq02hx5" path="res://assets/sfx/slash.mp3" id="46_mnx4l"]
 [ext_resource type="AudioStream" uid="uid://kt0qurfwejn6" path="res://assets/sfx/woosh-230554.mp3" id="48_m2a5k"]
+[ext_resource type="Texture2D" uid="uid://dya2jrophxbvl" path="res://assets/level3_assets/enemy/health_bar/enemy_health_bar_foreground_000.png" id="50_e28s2"]
+[ext_resource type="Texture2D" uid="uid://173qv8xifptp" path="res://assets/level3_assets/enemy/health_bar/enemy_health_bar_000.png" id="51_210hp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhqg7"]
 atlas = ExtResource("3_cfbsk")
@@ -441,7 +443,21 @@ shape = SubResource("RectangleShape2D_28tc1")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="TextureTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -19.0
+offset_top = -52.0
+offset_right = 237.0
+offset_bottom = -20.0
+scale = Vector2(0.15, 0.15)
+value = 100.0
+texture_under = ExtResource("50_e28s2")
+texture_progress = ExtResource("51_210hp")
+
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]
 [connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TextureTimer" to="." method="_on_texture_timer_timeout"]

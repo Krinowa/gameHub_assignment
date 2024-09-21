@@ -29,12 +29,19 @@ func _physics_process(delta):
 				# no point in running this once spike is ground
 				set_physics_process(false)
 			elif collider is Player:
-				pass #set the player to die
+				#death(collider)
+				pass
+				
 
 func apply_gravity(delta):
 	# Apply gravity to the velocity
 	velocity.y += gravity * delta
 
+#func death(collider):
+	#Engine.time_scale = 0.5
+	#collider.handle_death()
+	#timer.start()
+	
 
 func _on_area_2d_area_entered(area):
 	if area.get_parent() is Player:

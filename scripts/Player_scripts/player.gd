@@ -241,11 +241,31 @@ func handle_death():
 	set_physics_process(false)
 
 func on_damageable_hit(node : Node, damage_amount : int, knockback_direction : Vector2):
+	$TextureProgressBar.visible = true
+	$TextureProgressBar.value = damageable.health
+	$TextureTimer.wait_time = 1
+	$TextureTimer.start()
 	if(damageable.health > 0):
 		velocity = knockback_speed * knockback_direction
 	else:
 		handle_death()
+		$TextureProgressBar.visible = false
 		timer.start()
+
+#func attacked(damage):
+	#$TextureProgressBar.visible = true
+	#health -= damage
+	#print(health)
+	#$TextureProgressBar.value = health
+	#$Timer.wait_time = 1
+	#$Timer.start()
+	#if health <= 0:
+		#velocity.x = 0
+		#$AnimationPlayer.play('die')
+		#$TextureProgressBar.visible = false
+	
+func _on_texture_timer_timeout():
+	$TextureProgressBar.visible = false
 
 # Animation looped callback
 func _on_animated_sprite_2d_animation_looped():
@@ -269,6 +289,8 @@ func _on_control_change_health(action):
 func _on_timer_timeout():
 	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()
+	
+
 
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout
@@ -310,3 +332,6 @@ func reset_combo():
 
 func on_signal_key_collected(node : Node, has_key : bool):
 	print("Key collected!")
+
+
+
